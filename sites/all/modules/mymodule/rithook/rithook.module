@@ -21,9 +21,11 @@ function rithook_menu () {
 function rithook_map_object() {
 
 	$node = node_load(2);
+	$node3 = node_load(3);
 	//dpm($node);
 
 	$geojson_obj = leaflet_widget_geojson_feature($node->field_location['und'][0]['wkt']);
+	$geojson_obj3 = leaflet_widget_geojson_feature($node3->field_location['und'][0]['wkt']);
 
 	//$geojson_obj['geometry'] = get_object_vars($geojson_obj['geometry']);
 
@@ -31,7 +33,8 @@ function rithook_map_object() {
 
 		"type" => "FeatureCollection",
 		"features" => 
-				[$geojson_obj],
+				[$geojson_obj, $geojson_obj3],
+				
 	);
 
 
