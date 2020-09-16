@@ -1,0 +1,175 @@
+textarea:focus, textarea.form-control:focus, input.form-control:focus, input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus, [type=text].form-control:focus, [type=password].form-control:focus, [type=email].form-control:focus, [type=tel].form-control:focus, [contenteditable].form-control:focus {
+	box-shadow: none !important;
+
+}
+
+img.center {
+	display: block;
+	margin: 0 auto;
+}
+.marb10 {
+	margin-bottom: 10px !important; 
+}
+.marb20 {
+	margin-bottom: 20px !important; 
+}
+.marb30 {
+	margin-bottom: 30px !important; 
+}
+.marb40 {
+	margin-bottom: 40px !important; 
+}
+.marb50 {
+	margin-bottom: 50px !important; 
+}
+#block-block-1 {
+	text-align: center;
+}
+#navbar {
+	display: none;
+}
+
+
+body, #edit-field-email td, #edit-field-in-contact-number td, .panel, .paragraphs-item-type-coordinators, .search-form input[type="text"], .search-form select{
+
+	color: #242424 !important;
+	background: #F3F4F3 !important;
+}
+
+.search-form.prd{
+	border: 1px solid #999;
+	padding-top: 15px;
+	
+}
+
+.pagination .active span {
+	background: #98b7c9 !important;
+	border-color: #9cbdd0 !important;
+}
+
+.pagination > li > a {
+	color: #9fbccd !important; 
+}
+
+@font-face {
+    font-family: 'hatton';
+    src: url('/sites/all/modules/rit_module/rithook/font/hatton-semibold-webfont.woff') format('woff'),
+         url('/sites/all/modules/rit_module/rithook/font/hatton-semibold-webfont.woff2') format('woff2');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'tenor';
+    src: url('/sites/all/modules/rit_module/rithook/font/tenorsans-regular-webfont.woff') format('woff'),
+         url('/sites/all/modules/rit_module/rithook/font/tenorsans-regular-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'gaya';
+    src: url('/sites/all/modules/rit_module/rithook/font/gayathri-thin-webfont.woff') format('woff'),
+         url('/sites/all/modules/rit_module/rithook/font/gayathri-thin-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'hathem';
+    src: url('/sites/all/modules/rit_module/rithook/font/hathembosteemfree-wyjjv-webfont.woff') format('woff'),
+         url('/sites/all/modules/rit_module/rithook/font/hathembosteemfree-wyjjv-webfont.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.main-container h1 {
+	font-family: 'hatton', sans-serif !important;
+	padding-top: 15px;
+	font-size: 45px !important;
+}
+
+.main-container {
+
+	font-family: 'tenor', sans-serif !important;
+
+}
+
+.webmaster-menu {
+	background: #98B7C9 !important;
+	color: #fff;
+}
+
+.webmaster-menu ul.menu li ul li {
+	background: #98B7C9 !important;
+}
+
+.webmaster-menu ul.menu > li:hover > a {
+	background: #6d8c9e !important;
+}
+
+.webmaster-menu ul.menu li:hover li {
+  border-bottom: 1px solid #6d8c9e !important;
+
+}
+.border-line {
+	border-bottom: 1px solid #666;
+}
+.l25 {
+	line-height: 2.5em;
+}
+.l20 {
+	line-height: 2.0em;
+}
+.code16,
+.product-node-detail .field-label
+ {
+	color: #98B8CA; 
+	font-size: 16px;
+	font-weight: bold;
+}
+
+.title18 {
+	color: #666666;
+	font-size: 18px;
+	font-weight: bold;
+	
+}
+.normal16,
+.field-name-field-product-shop .field-items,
+.product-node-detail .field-items,
+.product-node-detail-1 .field-items
+ {
+	color: #989898;
+	font-size: 16px;
+	
+}
+
+.code14, 
+.code14 a{
+	color: #98B8CA; 
+	font-size: 14px;
+	font-weight: bold;
+	
+}
+.node-product-gallery .field-name-field-product-gallery-image .field-item {
+	float: left;
+	margin-right: 10px;
+}
+
+.title16, 
+.field-name-field-product-shop  .field-label,
+.product-node-detail-1 .field-label
+ {
+	color: #666666;
+	font-size: 16px;
+	font-weight: bold;
+	
+}
+.normal14 {
+	color: #989898;
+	font-size: 14px;
+	
+}
+.page-header {
+	border-bottom: none !important;
+}

@@ -1,0 +1,80 @@
+<?php
+
+
+function rithook_menu () {
+    $items['map'] = array(
+        'title' => 'Map',
+        'page callback' => 'rithook_map_page',
+        'access arguments' => array('access content'),
+    );
+
+
+    $items['map/json'] = array(
+        'access callback'   => true, // available to all
+        'page callback'     => 'rithook_map_object', // defined below
+        'delivery callback' => 'drupal_json_output' 
+    );
+
+    return $items;
+}     
+
+function rithook_map_object() {
+
+	$node = node_load(2);
+	//dpm($node);
+
+	$geojson_obj = leaflet_widget_geojson_feature($node->field_location['und'][0]['wkt']);
+
+	//$geojson_obj['geometry'] = get_object_vars($geojson_obj['geometry']);
+
+	$object2 = array(
+
+		"type" => "FeatureCollection",
+		"features" => 
+				[$geojson_obj],
+	);
+
+
+	$object = array(
+
+		"type" => "FeatureCollection",
+		"features" => [
+			array(
+				"type" => "Feature",
+				"properties" => array(
+					"letter" => 'xxxxxxx',
+				),
+				"geometry" => array(
+
+				  "type" => "Point",
+				  "coordinates" => [12.744140625,0.219726023921],
+				
+				),
+			),
+
+		],
+
+	);
+	return $object2;
+    //return array('test'=>true,'dummy'=>array(0,1));
+}
+
+function rithook_map_page () {
+
+
+
+    return theme('rithook_map_page', array('title' => 'Testing'));
+}
+
+/*
+    Implements hook_theme();
+*/
+function rithook_theme($existing, $type, $theme, $path) {
+    return array(
+        'rithook_map_page' => array(
+            'variables' => array('title' => NULL),
+            'template' => 'map',
+        ),
+    );
+} 
+
