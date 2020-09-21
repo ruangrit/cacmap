@@ -23,7 +23,7 @@ font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	mapboxgl.accessToken = 'pk.eyJ1IjoicnVhbmdyaXQiLCJhIjoiY2tlMWFua2VuMGJrdDJ5bXdweWp0M3gyaCJ9.JF08GIkAbniR_wUUVe_80A';
 var map = new mapboxgl.Map({
 container: 'map',
-style: 'mapbox://styles/mapbox/light-v10',
+style: 'mapbox://styles/ruangrit/ckfcvtzyx5nj919nplfyzxvul',
 center: [99.8355102539, 18.2997729453],
 zoom: 8
 });
@@ -32,8 +32,7 @@ map.on('load', function () {
 	// Add a source for the state polygons.
 	map.addSource('national-park', {
 	'type': 'geojson',
-	'data':
-	'http://localhost:8888/map/json'
+	'data': 'http://localhost:8888/map/json',
 	});
 	 
 	// Add a layer showing the state polygons.
@@ -43,10 +42,11 @@ map.on('load', function () {
 		'type': 'fill',
 		'source': 'national-park',
 		'paint': {
-		'fill-color': '#888888',
+		'fill-color': '#FF0000',
 		'fill-opacity': 0.4
-	},
-		'filter': ['==', '$type', 'Polygon']
+		},
+		'filter': ['==', '$type', 'Polygon'],
+
 	});
 	 
 	map.addLayer({
@@ -56,7 +56,7 @@ map.on('load', function () {
 		'paint': {
 		'circle-radius': 6,
 		'circle-color': '#B42222'
-	},
+		},
 		'filter': ['==', '$type', 'Point']
 	});
 
@@ -67,7 +67,7 @@ map.on('load', function () {
 		'layout': {
 		'line-join': 'round',
 		'line-cap': 'round'
-	},
+		},
 		'paint': {
 			'line-color': '#888',
 			'line-width': 2
