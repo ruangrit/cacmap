@@ -1,12 +1,10 @@
-    
+<?php
 
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfWrRIdCO89LG5iydTRP3obm2Ix9iScG4&callback=initMap&libraries=&v=weekly"
-      defer
-    ></script>
+	$node1 = node_load(1);
+	
+	//dpm($node);
 
-<?php 
-$a = 'fffgg';
-print $a;
+	$geojson_obj1 = leaflet_widget_geojson_feature($node1->field_location['und'][0]['wkt']);
+	$geojson_obj1['properties']['name'] = 'xxxxxxx';
+	dpm($geojson_obj1);
 ?>

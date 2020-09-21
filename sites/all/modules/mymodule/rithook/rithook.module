@@ -29,6 +29,10 @@ function rithook_map_object() {
 	$geojson_obj2 = leaflet_widget_geojson_feature($node2->field_location['und'][0]['wkt']);
 	$geojson_obj3 = leaflet_widget_geojson_feature($node3->field_location['und'][0]['wkt']);
 
+	$geojson_obj1['properties']['name'] = 'node1';
+	$geojson_obj2['properties']['name'] = 'node2';
+	$geojson_obj3['properties']['name'] = 'node3';
+
 	//$geojson_obj['geometry'] = get_object_vars($geojson_obj['geometry']);
 
 	$object2 = array(

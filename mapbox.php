@@ -23,48 +23,86 @@ font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 	mapboxgl.accessToken = 'pk.eyJ1IjoicnVhbmdyaXQiLCJhIjoiY2tlMWFua2VuMGJrdDJ5bXdweWp0M3gyaCJ9.JF08GIkAbniR_wUUVe_80A';
 var map = new mapboxgl.Map({
 container: 'map',
-style: 'mapbox://styles/mapbox/streets-v11',
+style: 'mapbox://styles/mapbox/light-v10',
 center: [99.8355102539, 18.2997729453],
 zoom: 8
 });
  
 map.on('load', function () {
-// Add a source for the state polygons.
-map.addSource('states', {
-'type': 'geojson',
-'data':
-'http://localhost:8888/map/json'
-});
- 
-// Add a layer showing the state polygons.
-map.addLayer({
-'id': 'states-layer',
-'type': 'fill',
-'source': 'states',
-'paint': {
-'fill-color': 'rgba(200, 100, 240, 0.4)',
-'fill-outline-color': 'rgba(200, 100, 240, 1)'
-}
-});
- 
-// When a click event occurs on a feature in the states layer, open a popup at the
-// location of the click, with description HTML from its properties.
-map.on('click', 'states-layer', function (e) {
-new mapboxgl.Popup()
-.setLngLat(e.lngLat)
-.setHTML(e.features[0].properties.name)
-.addTo(map);
-});
- 
-// Change the cursor to a pointer when the mouse is over the states layer.
-map.on('mouseenter', 'states-layer', function () {
-map.getCanvas().style.cursor = 'pointer';
-});
- 
-// Change it back to a pointer when it leaves.
-map.on('mouseleave', 'states-layer', function () {
-map.getCanvas().style.cursor = '';
-});
+	// Add a source for the state polygons.
+	map.addSource('national-park', {
+	'type': 'geojson',
+	'data':
+	'http://localhost:8888/map/json'
+	});
+	 
+	// Add a layer showing the state polygons.
+// Add a symbol layer
+	map.addLayer({
+		'id': 'park-boundary',
+		'type': 'fill',
+		'source': 'national-park',
+		'paint': {
+		'fill-color': '#888888',
+		'fill-opacity': 0.4
+	},
+		'filter': ['==', '$type', 'Polygon']
+	});
+	 
+	map.addLayer({
+		'id': 'park-volcanoes',
+		'type': 'circle',
+		'source': 'national-park',
+		'paint': {
+		'circle-radius': 6,
+		'circle-color': '#B42222'
+	},
+		'filter': ['==', '$type', 'Point']
+	});
+
+	map.addLayer({
+		'id': 'route',
+		'type': 'line',
+		'source': 'national-park',
+		'layout': {
+		'line-join': 'round',
+		'line-cap': 'round'
+	},
+		'paint': {
+			'line-color': '#888',
+			'line-width': 2
+		},
+		'filter': ['==', '$type', 'LineString']
+	});
+
+
+	 
+	// When a click event occurs on a feature in the states layer, open a popup at the
+	// location of the click, with description HTML from its properties.
+	map.on('click', 'route', function (e) {
+	new mapboxgl.Popup()
+	.setLngLat(e.lngLat)
+	.setHTML(e.features[0].properties.name)
+	.addTo(map);
+	});
+
+
+	map.on('click', 'park-boundary', function (e) {
+	new mapboxgl.Popup()
+	.setLngLat(e.lngLat)
+	.setHTML(e.features[0].properties.name)
+	.addTo(map);
+	});
+	 
+	// Change the cursor to a pointer when the mouse is over the states layer.
+	map.on('mouseenter', 'route', function () {
+	map.getCanvas().style.cursor = 'pointer';
+	});
+	 
+	// Change it back to a pointer when it leaves.
+	map.on('mouseleave', 'route', function () {
+	map.getCanvas().style.cursor = '';
+	});
 });
 </script>
  
