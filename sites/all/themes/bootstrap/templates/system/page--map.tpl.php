@@ -5,8 +5,9 @@
 	position: absolute;
 	top: 0;
 	bottom: 0;
-	width: 90%;
-	height: 90%;
+	width: 100%;
+	height: 100%;
+	
 }
 
 body { 
@@ -19,7 +20,7 @@ body {
 	width: 100%;
 	height: 100%;
 	overflow: hidden;
-
+	
 	
 }
 .filter-box {
@@ -33,7 +34,6 @@ body {
 	justify-content: center;
 	z-index: 200;
 	padding: 35px 27px;
-	display: none;
 }
 
 .info-box {
@@ -50,16 +50,63 @@ body {
 .mapboxgl-map {
 	
 }
+.map-header, .map-footer {
+	height: 50px;
+	position: absolute;
+	z-index: 200;
+	width: 100%;
+	
+}
+
+.map-header {
+	padding-left: 50px;
+}
+
+.map-header, .map-footer, .tab-left, .tab-right {
+	background: #fff;
+
+} 
+
+.map-footer {
+	bottom: 0px;
+}
+.tab-left, .tab-right {
+	position: absolute;
+	z-index: 200;
+	width: 50px;
+	height: 100%;
+	
+}
+
+.tab-right {
+	right: 0px;
+}
+
+
+
+
 .mapboxgl-popup {
 max-width: 400px;
 font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 }
+
 </style>
 
 <div class="map-wrapper">
+
+	<div class="map-header">Header</div>
 	<div class="filter-box">filter</div>
 	<div class="info-box">infooooooooooo</div>
+
+	<div class="tab-left">Left</div>
 	<div id="map"></div>
+	<div class="tab-right">Right</div>
+
+
+
+
+
+	<div class="map-footer">Footer</div>
 	
 
 
