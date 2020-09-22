@@ -116,8 +116,8 @@ map.on('load', function () {
 		'line-cap': 'round'
 		},
 		'paint': {
-			'line-color': '#888',
-			'line-width': 2
+			'line-color': '#753259',
+			'line-width': 3
 		},
 		'filter': ['==', '$type', 'LineString']
 	});
@@ -127,28 +127,35 @@ map.on('load', function () {
 	// When a click event occurs on a feature in the states layer, open a popup at the
 	// location of the click, with description HTML from its properties.
 	map.on('click', 'route', function (e) {
-	new mapboxgl.Popup()
-	.setLngLat(e.lngLat)
-	.setHTML(e.features[0].properties.name)
-	.addTo(map);
+		new mapboxgl.Popup()
+		.setLngLat(e.lngLat)
+		.setHTML(e.features[0].properties.name)
+		.addTo(map);
 	});
 
 
 	map.on('click', 'park-boundary', function (e) {
-	new mapboxgl.Popup()
-	.setLngLat(e.lngLat)
-	.setHTML(e.features[0].properties.name)
-	.addTo(map);
+		new mapboxgl.Popup()
+		.setLngLat(e.lngLat)
+		.setHTML(e.features[0].properties.name)
+		.addTo(map);
+	});
+
+	map.on('click', 'park-volcanoes', function (e) {
+		new mapboxgl.Popup()
+		.setLngLat(e.lngLat)
+		.setHTML(e.features[0].properties.name)
+		.addTo(map);
 	});
 	 
 	// Change the cursor to a pointer when the mouse is over the states layer.
 	map.on('mouseenter', 'route', function () {
-	map.getCanvas().style.cursor = 'pointer';
+		map.getCanvas().style.cursor = 'pointer';
 	});
 	 
 	// Change it back to a pointer when it leaves.
 	map.on('mouseleave', 'route', function () {
-	map.getCanvas().style.cursor = '';
+		map.getCanvas().style.cursor = '';
 	});
 });
 </script>
