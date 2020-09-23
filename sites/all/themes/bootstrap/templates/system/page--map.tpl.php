@@ -23,18 +23,6 @@ body {
 	
 	
 }
-.filter-box {
-	width: 265px;
-	background: #f0c084;
-	position: absolute;
-	bottom: 38px;
-	left: 38px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	z-index: 200;
-	padding: 35px 27px;
-}
 
 .info-box {
 	width: 30vw;
@@ -47,9 +35,6 @@ body {
 	display: none;
 }
 
-.mapboxgl-map {
-	
-}
 .map-header, .map-footer {
 	height: 50px;
 	position: absolute;
@@ -64,7 +49,6 @@ body {
 
 .map-header, .map-footer, .tab-left, .tab-right {
 	background: #fff;
-
 } 
 
 .map-footer {
@@ -82,12 +66,52 @@ body {
 	right: 0px;
 }
 
-
-
-
 .mapboxgl-popup {
-max-width: 400px;
-font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+	max-width: 400px;
+	font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+
+#menu {
+	background: #fff;
+	position: absolute;
+	z-index: 1;
+	top: 80px;
+	left: 80px;
+	border-radius: 3px;
+	width: 120px;
+	padding: 5px;
+}
+ 
+#menu a {
+	font-size: 13px;
+	color: #404040;
+	display: block;
+	margin: 0;
+	padding: 0;
+	padding: 10px;
+	text-decoration: none;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+	text-align: center;
+	z-index: 999;
+}
+ 
+#menu a:last-child {
+	border: none;
+}
+ 
+#menu a:hover {
+	background-color: #618d9e;
+	color: #404040;
+}
+ 
+#menu a.active {
+	background-color: #446c7b;
+	color: #ffffff;
+}
+ 
+#menu a.active:hover {
+	background: #3074a4;
 }
 
 </style>
@@ -95,10 +119,15 @@ font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 <div class="map-wrapper">
 
 	<div class="map-header">Header</div>
-	<div class="filter-box">filter</div>
 	<div class="info-box">infooooooooooo</div>
 
 	<div class="tab-left">Left</div>
+
+	<nav id="menu">
+		<a href="#" id="cat-1" class="active">cat1</a>
+		<a href="#" id="cat-2" class="active">cat2</a>
+	</nav>
+
 	<div id="map"></div>
 	<div class="tab-right">Right</div>
 
@@ -153,6 +182,9 @@ map.on('load', function () {
 		'circle-radius': 10,
 		'circle-color': '#B42222'
 		},
+		'layout': {
+			'visibility': 'visible'
+		},
 		'filter': ['all',
 			['==', '$type', 'Point'],
 			['==', 'tid', '1']
@@ -168,6 +200,10 @@ map.on('load', function () {
 		'circle-radius': 10,
 		'circle-color': '#2f7f59'
 		},
+		'layout': {
+			'visibility': 'visible'
+		},
+
 		'filter': ['all',
 			['==', '$type', 'Point'],
 			['==', 'tid', '2']
@@ -225,6 +261,28 @@ map.on('load', function () {
 		map.getCanvas().style.cursor = '';
 	});
 });
+
+$ = jQuery;
+$( "#menu > a" ).each(function( index ) {
+  console.log(this.id);
+	$(this).click(function(e) {
+		var clickedLayer = this.id;
+		e.preventDefault();
+		e.stopPropagation();
+		 
+		var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+		 
+		// toggle layer visibility by changing the layout object's visibility property
+		if (visibility === 'visible') {
+			map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+			this.className = '';
+		} else {
+			this.className = 'active';
+			map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+		}
+	})
+});
+
 </script>
 
 
