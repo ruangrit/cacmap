@@ -28,6 +28,7 @@ function rithook_map_object() {
 		$geojson_obj[$run_num] = leaflet_widget_geojson_feature($map->field_location['und'][0]['wkt']);
 		$geojson_obj[$run_num]['properties']['name'] = $map->title;
 		$geojson_obj[$run_num]['properties']['nid'] = $map->nid;
+		$geojson_obj[$run_num]['properties']['tid'] = $map->field_ww2_category['und'][0]['tid'];
 		$run_num++;
 	}
 

@@ -114,7 +114,8 @@ font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
 
 <script>
-	mapboxgl.accessToken = 'pk.eyJ1IjoicnVhbmdyaXQiLCJhIjoiY2tlMWFua2VuMGJrdDJ5bXdweWp0M3gyaCJ9.JF08GIkAbniR_wUUVe_80A';
+
+mapboxgl.accessToken = 'pk.eyJ1IjoicnVhbmdyaXQiLCJhIjoiY2tlMWFua2VuMGJrdDJ5bXdweWp0M3gyaCJ9.JF08GIkAbniR_wUUVe_80A';
 var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/ruangrit/ckfcshb7e4miq19rw6o4isr00',
@@ -143,15 +144,34 @@ map.on('load', function () {
 
 	});
 	 
+	// circle tid is 1 
 	map.addLayer({
-		'id': 'park-volcanoes',
+		'id': 'cat-1',
 		'type': 'circle',
 		'source': 'national-park',
 		'paint': {
-		'circle-radius': 6,
+		'circle-radius': 10,
 		'circle-color': '#B42222'
 		},
-		'filter': ['==', '$type', 'Point']
+		'filter': ['all',
+			['==', '$type', 'Point'],
+			['==', 'tid', '1']
+			]
+	});
+
+	// circle tid is 2
+	map.addLayer({
+		'id': 'cat-2',
+		'type': 'circle',
+		'source': 'national-park',
+		'paint': {
+		'circle-radius': 10,
+		'circle-color': '#2f7f59'
+		},
+		'filter': ['all',
+			['==', '$type', 'Point'],
+			['==', 'tid', '2']
+			]
 	});
 
 	map.addLayer({
