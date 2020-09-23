@@ -158,6 +158,7 @@ center: [99.0501594543, 18.7249499481],
 zoom: 6
 });
  
+var refreshIntervalId;
 map.on('load', function () {
 	// Add a source for the state polygons.
 	map.addSource('national-park', {
@@ -186,7 +187,8 @@ map.on('load', function () {
 		'source': 'national-park',
 		'paint': {
 		'circle-radius': 10,
-		'circle-color': '#B42222'
+		'circle-color': '#B42222',
+		
 		},
 		'layout': {
 			'visibility': 'visible'
@@ -231,6 +233,13 @@ map.on('load', function () {
 		'filter': ['==', '$type', 'LineString']
 	});
 
+	// Create a popup, but don't add it to the map yet.
+	var popup = new mapboxgl.Popup({
+		closeButton: false,
+		closeOnClick: false
+	});
+
+
 
 	 
 	// When a click event occurs on a feature in the states layer, open a popup at the
@@ -240,6 +249,7 @@ map.on('load', function () {
 		.setLngLat(e.lngLat)
 		.setHTML(e.features[0].properties.name)
 		.addTo(map);
+
 	});
 
 
@@ -250,12 +260,39 @@ map.on('load', function () {
 		.addTo(map);
 	});
 
-	map.on('click', 'park-volcanoes', function (e) {
-		new mapboxgl.Popup()
-		.setLngLat(e.lngLat)
-		.setHTML(e.features[0].properties.name)
-		.addTo(map);
+	// ============================== Cat1
+	map.on('click', 'cat-1', function (e) {
+
+		var clickedLayer = 'cat-1';
+		refreshIntervalId = setInterval(() => {
+			var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+
+			if (visibility === 'visible') {
+				map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+				this.className = '';
+			} else {
+				this.className = 'active';
+				map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+			}
+
+    	}, 500);
 	});
+	map.on('mouseenter', 'cat-1', function (e) {
+		map.getCanvas().style.cursor = 'pointer';
+		var coordinates = e.features[0].geometry.coordinates.slice();
+		var description = e.features[0].properties.name;
+		popup.setLngLat(coordinates).setHTML(description).addTo(map);
+
+	});
+	 
+	map.on('mouseleave', 'cat-1', function () {
+		popup.remove();
+		map.getCanvas().style.cursor = '';
+		//==== clear interval
+		//====clearInterval(refreshIntervalId);
+		map.setPaintProperty('cat-1', 'circle-radius', 10);
+	});
+	//================================
 	 
 	// Change the cursor to a pointer when the mouse is over the states layer.
 	map.on('mouseenter', 'route', function () {
@@ -268,18 +305,21 @@ map.on('load', function () {
 	});
 });
 
+
+
 $ = jQuery;
 $( "#menu > a" ).each(function( index ) {
-  console.log(this.id);
 	$(this).click(function(e) {
+
+		// Todo fixbug when interval on
+		clearInterval(refreshIntervalId);
+		var is_active = $(this).attr('class');
 		var clickedLayer = this.id;
 		e.preventDefault();
 		e.stopPropagation();
 		 
-		var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
-		 
 		// toggle layer visibility by changing the layout object's visibility property
-		if (visibility === 'visible') {
+		if (is_active) {
 			map.setLayoutProperty(clickedLayer, 'visibility', 'none');
 			this.className = '';
 		} else {
