@@ -79,7 +79,6 @@ body {
 	top: 80px;
 	left: 80px;
 	border-radius: 3px;
-	width: 120px;
 	padding: 5px;
 }
  
@@ -92,7 +91,6 @@ body {
 	padding: 10px;
 	text-decoration: none;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-	text-align: center;
 	z-index: 999;
 }
  
@@ -123,9 +121,17 @@ body {
 
 	<div class="tab-left">Left</div>
 
+
 	<nav id="menu">
-		<a href="#" id="cat-1" class="active">cat1</a>
-		<a href="#" id="cat-2" class="active">cat2</a>
+		<?php
+			$vocabulary = taxonomy_vocabulary_machine_name_load('ww2_category');
+			$terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+			foreach ($terms as $term) {
+	 			print '<a class="active" id="cat-'.$term->tid.'" href="#">'.$term->name.'</a>';
+			}
+
+
+		?>
 	</nav>
 
 	<div id="map"></div>
