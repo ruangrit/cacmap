@@ -252,6 +252,23 @@ map.on('load', function () {
 
 	});
 
+	map.on('mouseenter', 'route', function (e) {
+		map.getCanvas().style.cursor = 'pointer';
+		var coordinates = e.lngLat;
+		var description = e.features[0].properties.name;
+		popup.setLngLat(coordinates).setHTML(description).addTo(map);
+
+	});
+	 
+	map.on('mouseleave', 'route', function () {
+		popup.remove();
+		map.getCanvas().style.cursor = '';
+		//==== clear interval
+		//====clearInterval(refreshIntervalId);
+		map.setPaintProperty('cat-1', 'circle-radius', 10);
+	});
+	//===================================
+
 
 	map.on('click', 'park-boundary', function (e) {
 		new mapboxgl.Popup()
@@ -264,6 +281,9 @@ map.on('load', function () {
 	map.on('click', 'cat-1', function (e) {
 
 		var clickedLayer = 'cat-1';
+		
+		console.log(e.features[0]);
+		/*
 		refreshIntervalId = setInterval(() => {
 			var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
 
@@ -276,6 +296,8 @@ map.on('load', function () {
 			}
 
     	}, 500);
+
+    	*/
 	});
 	map.on('mouseenter', 'cat-1', function (e) {
 		map.getCanvas().style.cursor = 'pointer';
