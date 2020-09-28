@@ -38,11 +38,19 @@ body {
 	
 }
 
-#info-body {
+#info-body, #info-header {
 	margin: 12px;
 	
 }
 
+.close {
+	opacity: 1 !important;
+}
+
+h1 {
+	font-weight: bold;
+	font-size: 25px !important;
+}
 #info-body h3, #info-body .label {
 	color: #6b430a;
 	font-weight: bold;
@@ -86,7 +94,6 @@ body {
 	height: 50px;
 	position: absolute;
 	z-index: 200;
-	width: 100%;
 	
 }
 
@@ -100,6 +107,10 @@ body {
 
 .map-footer {
 	bottom: 0px;
+	margin-left: 50px;
+	margin-right: 50px;
+
+
 }
 .tab-left, .tab-right {
 	position: absolute;
@@ -187,11 +198,21 @@ body {
 
 <div class="map-wrapper">
 
-	<div class="map-header">
-	Header
+	<div class="map-header col-xs-12">
+		<div class="col-xs-7">
+
+			<h1>WW2 SITES NTH</h1>
+		</div>
+
+		<div class="col-xs-3">
+		th en jp 
+		</div>
+		<div class="col-xs-2">
+		ABOUT
+		</div>
 	</div>
 
-	<div class="tab-left">Left</div>
+	<div class="tab-left">&nbsp;</div>
 
 
 	<nav id="menu">
@@ -208,11 +229,15 @@ body {
 
 	<div class="info-box">
 		
+
+		<div id="info-header">
+			
+
 		<button type="button" class="close close-info-box" aria-label="Close">
 		  <span aria-hidden="true">&times;</span>
 		</button>
 
-		<div id="info-header"></div>
+		</div>
 		<div id="info-body">
 
 
@@ -228,7 +253,11 @@ body {
 
 
 
-	<div class="map-footer">Footer</div>
+	<div class="map-footer">
+		
+		© Chiang Mai Art Conversation and Sutthirat Supaparinya 2020 (cc) BY-NC
+คำประกาศสิทธิ: เนื้อหาในเว็บไซต์ ถือสิทธิโดย " Chiang Mai Art Conversation และสุทธิรัตน์ ศุภปริญญา" แต่สามารถนำไปใช้งานได้ตามเงื่อนไข สัญญาอนุญาต Creative Commons (cc) BY-NC กล่าวคือ ต้องอ้างอิงแหล่งที่มา และไม่ใช้เพื่อการค้า
+	</div>
 	
 
 
@@ -427,7 +456,7 @@ function showMapDetail(data) {
 	if(data.image) {
 
 		var images = JSON.parse(data.image);
-		var reference_file = JSON.parse(data.reference_file);
+
 		var url;
 		var title;
 		var slideImage = '<div id="carouselExampleControls" class="carousel slide" data-ride="carousel"> ';
@@ -478,13 +507,10 @@ function showMapDetail(data) {
 		slideImage += '</div>';
 		html += slideImage;
 
-		$('.carousel').carousel({
-		  interval: 2000,
-		})
 
 	}
 
-	console.log(data);
+	
 	if(data.address) {
 		html += '<div><span class="label"> Address: </span>'+data.address+'</div>';
 	}
@@ -508,20 +534,27 @@ function showMapDetail(data) {
 
 
 	if (data.reference_file) {
+
+		var reference_file = JSON.parse(data.reference_file);
+		var url_file;
+		var title_file;
 		html += '<div class="ref-file">';
 		html += '<span class="label"> Reference Files</span>';
 		html += '<ul>';
 		Object.keys(reference_file).forEach(function(key) {
-			url = reference_file[key]['url'];
-		    title = reference_file[key]['title'];
+			url_file = reference_file[key]['url'];
+		    title_file = reference_file[key]['title'];
 
-		    html += '<li><a href="'+url+'" target="_blank">'+title+'</a></li>'
+		    html += '<li><a href="'+url_file+'" target="_blank">'+title_file+'</a></li>'
 		});
 		html += '<ul>';
 		html += '</div>';
 	}
 	$('#info-body').html(html);
 	$('.info-box').slideDown();
+	$('.carousel').carousel({
+  		interval: 2000
+	})
 }
 $('.close-info-box').click(function () {
 
