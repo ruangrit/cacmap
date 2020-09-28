@@ -142,6 +142,10 @@ body {
 
 	<div class="info-box">
 		
+		<button type="button" class="close close-info-box" aria-label="Close">
+		  <span aria-hidden="true">&times;</span>
+		</button>
+
 		<div id="info-header"></div>
 		<div id="info-body">
 
@@ -149,7 +153,7 @@ body {
 
 
 		</div>
-		<div id="info-close" title="Close"></div>
+		
 	</div>
 	<div id="map"></div>
 	<div class="tab-right">Right</div>
@@ -402,6 +406,10 @@ function showMapDetail(data) {
 
 		html += slideImage;
 
+		$('.carousel').carousel({
+		  interval: 2000,
+		})
+
 	}
 
 	console.log(data);
@@ -442,6 +450,10 @@ function showMapDetail(data) {
 	$('#info-body').html(html);
 	$('.info-box').slideDown();
 }
+$('.close-info-box').click(function () {
+
+	$('.info-box').slideUp();
+});
 
 $( "#menu > a" ).each(function( index ) {
 	$(this).click(function(e) {
