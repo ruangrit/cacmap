@@ -30,7 +30,53 @@ function rithook_map_object() {
     dpm($language);
 	foreach($nodes as $map) {
 		$geojson_obj[$run_num] = leaflet_widget_geojson_feature($map->field_location['und'][0]['wkt']);
-		$geojson_obj[$run_num]['properties']['name'] = $map->title_field[$lan][0]['value'];
+
+        $geojson_obj[$run_num]['properties']['name'] = '';
+        if (isset($map->title_field[$lan][0]['value'])) {
+            $geojson_obj[$run_num]['properties']['name'] = $map->title_field[$lan][0]['value'];
+        }
+
+        $geojson_obj[$run_num]['properties']['address'] = '';
+        if (isset($map->field_address[$lan][0]['value'])) {
+            $geojson_obj[$run_num]['properties']['address'] = $map->field_address[$lan][0]['value'];
+        }
+
+        $geojson_obj[$run_num]['properties']['ww2_status'] = '';
+        if (isset($map->field_ww2_status[$lan][0]['value'])) {
+            $geojson_obj[$run_num]['properties']['ww2_status'] = $map->field_ww2_status[$lan][0]['value'];
+        }
+
+        $geojson_obj[$run_num]['properties']['present_status'] = '';
+        if (isset($map->field_present_status[$lan][0]['value'])) {
+            $geojson_obj[$run_num]['properties']['present_status'] = $map->field_present_status[$lan][0]['value'];
+        }
+
+        $geojson_obj[$run_num]['properties']['founded'] = '';
+        if (isset($map->field_founded[$lan][0]['value'])) {
+            $geojson_obj[$run_num]['properties']['founded'] = $map->field_founded[$lan][0]['value'];
+        }
+
+        $geojson_obj[$run_num]['properties']['note'] = '';
+        if (isset($map->field_note[$lan][0]['value'])) {
+            $geojson_obj[$run_num]['properties']['note'] = $map->field_note[$lan][0]['value'];
+        }
+
+        $geojson_obj[$run_num]['properties']['reference'] = '';
+        if (isset($map->field_reference[$lan][0]['value'])) {
+            $geojson_obj[$run_num]['properties']['reference'] = $map->field_reference[$lan][0]['value'];
+        }
+
+        $geojson_obj[$run_num]['properties']['image'] = '';
+        if (isset($map->field_image['und'])) {
+            $run_num_image = 0;
+            foreach ($map->field_image['und'] as $image) {
+                $geojson_obj[$run_num]['properties']['image'][$run_num_image]['url'] = file_create_url($image['uri']);
+                $geojson_obj[$run_num]['properties']['image'][$run_num_image]['title'] = $image['title'];
+                $run_num_image++;
+            }
+        }
+
+
 		$geojson_obj[$run_num]['properties']['nid'] = $map->nid;
 		$geojson_obj[$run_num]['properties']['tid'] = $map->field_ww2_category['und'][0]['tid'];
 		$run_num++;
