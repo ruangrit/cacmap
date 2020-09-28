@@ -25,14 +25,17 @@ body {
 }
 
 .info-box {
-	width: 30vw;
-	height: 100vh;
+	width: 400px;
+	height: 100%;
 	position: absolute;
 	top:0;
 	right: 0;
-	z-index: 200;
-	overflow: hidden;
+	z-index: 201;
+	overflow: scroll;
+	background: #c5ad8a;
+	border: 4px solid #FFF;
 	display: none;
+	
 }
 
 .map-header, .map-footer {
@@ -112,6 +115,8 @@ body {
 	background: #3074a4;
 }
 
+
+
 </style>
 
 <div class="map-wrapper">
@@ -119,7 +124,6 @@ body {
 	<div class="map-header">
 	Header
 	</div>
-	<div class="info-box">infooooooooooo</div>
 
 	<div class="tab-left">Left</div>
 
@@ -136,6 +140,17 @@ body {
 		?>
 	</nav>
 
+	<div class="info-box">
+		
+		<div id="info-header"></div>
+		<div id="info-body">
+
+
+
+
+		</div>
+		<div id="info-close" title="Close"></div>
+	</div>
 	<div id="map"></div>
 	<div class="tab-right">Right</div>
 
@@ -296,6 +311,7 @@ map.on('load', function () {
 	// ============================== Cat1
 	map.on('click', 'cat-1', function (e) {
 		// Show detail on map
+		showMapDetail(e.features[0].properties);
 		
 	});
 	map.on('mouseenter', 'cat-1', function (e) {
@@ -329,9 +345,73 @@ map.on('load', function () {
 
 
 $ = jQuery;
+
+function showMapDetail(data) {
+
+	var html = '';
+	if(data.name) {
+
+		html += '<h2>'+data.name+'</h2>';
+	}
+
+	if(data.image) {
+
+		var images = JSON.parse(data.image);
+		var url;
+		var title;
+		var slideImage = '<div id="carouselExampleControls" class="carousel slide" data-ride="carousel"> ';
+
+		slideImage += '<ol class="carousel-indicators">';
+		var runNumImage2 = 0;
+		Object.keys(images).forEach(function(key) {
+
+		    var itemClass2 = ''; 
+		    if (runNumImage2 == 0) {
+		    	itemClass2 = 'active';
+		    }
+
+			slideImage += '<li data-target="#carouselExampleControls" data-slide-to="'+runNumImage2+'" class="'+itemClass2+'"></li>';
+			runNumImage2++;
+		});
+
+		slideImage += '</ol>';
+
+		slideImage += '<div class="carousel-inner"> ';
+
+
+		var runNumImage = 1;
+		Object.keys(images).forEach(function(key) {
+		    url = images[key]['url'];
+		    title = images[key]['title'];
+
+		    var itemClass = 'item'; 
+		    if (runNumImage == 1) {
+		    	itemClass = 'item active';
+		    }
+		    slideImage += '<div class="'+itemClass+'"> <img src="'+url+'" alt="'+title+'"> <div class="carousel-caption d-none d-md-block"><p>'+title+'</p> </div> </div> ';
+		    runNumImage++;
+
+		});
+
+		slideImage += '</div>'
+
+		slideImage += '<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>';
+		slideImage += '</div>'
+
+
+		html += slideImage;
+
+		$('#info-body').html(html);
+		$('.carousel').carousel();
+
+		$('.info-box').slideDown();
+
+	}
+}
+
 $( "#menu > a" ).each(function( index ) {
 	$(this).click(function(e) {
-
+		$('.info-box').slideUp();
 		// Todo fixbug when interval on
 		clearInterval(refreshIntervalId);
 		var is_active = $(this).attr('class');
