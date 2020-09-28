@@ -357,6 +357,7 @@ function showMapDetail(data) {
 	if(data.image) {
 
 		var images = JSON.parse(data.image);
+		var reference_file = JSON.parse(data.reference_file);
 		var url;
 		var title;
 		var slideImage = '<div id="carouselExampleControls" class="carousel slide" data-ride="carousel"> ';
@@ -423,6 +424,20 @@ function showMapDetail(data) {
 	}
 	if(data.reference) {
 		html += '<div><span class="label"> Reference </span>'+data.reference+'</div>';
+	}
+
+
+	if (data.reference_file) {
+		html += '<div class="ref-file">';
+		html += '<span class="label"> Reference Files</span>'
+		Object.keys(reference_file).forEach(function(key) {
+			url = reference_file[key]['url'];
+		    title = reference_file[key]['title'];
+
+		    html += '<div><a href="'+url+'" target="_blank">'+title+'</a></div>'
+		});
+
+		html += '</div>';
 	}
 	$('#info-body').html(html);
 	$('.info-box').slideDown();
