@@ -32,11 +32,55 @@ body {
 	right: 0;
 	z-index: 201;
 	overflow: scroll;
-	background: #c5ad8a;
-	border: 4px solid #FFF;
+	background: #e8d2b0;
+	
 	display: none;
 	
 }
+
+#info-body {
+	margin: 12px;
+	
+}
+
+#info-body h3, #info-body .label {
+	color: #6b430a;
+	font-weight: bold;
+}
+
+#info-body .label {
+	font-size: 90% !important;
+	padding: 0px !important;
+}
+
+#info-body, #info-body li a {
+	color: #866535;
+	
+}
+
+#info-body li a {
+	
+	font-size: 85%;
+}
+
+#info-body .ref-file {
+	border-top: 1px dotted #6b430a;
+}
+
+#carouselExampleControls {
+	margin-bottom: 10px;
+}
+
+.carousel-caption {
+	position: unset !important;
+	text-shadow: none;
+	color: #6b430a !important;
+	font-size: 85%;
+	padding-top: 5px !important;
+	padding-bottom: 5px !important;
+
+}
+
 
 .map-header, .map-footer {
 	height: 50px;
@@ -116,6 +160,28 @@ body {
 }
 
 
+@font-face {
+    font-family: 'Noto-Sans-Thai';
+    src: url('/sites/all/modules/mymodule/rithook/font/subset-NotoSansThaiUI-Regular.woff2') format('woff2'),
+         url('/sites/all/modules/mymodule/rithook/font/subset-NotoSansThaiUI-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Noto-Sans-Thai';
+    src: url('/sites/all/modules/mymodule/rithook/font/subset-NotoSansThaiUI-Bold.woff2') format('woff2'),
+         url('/sites/all/modules/mymodule/rithook/font/subset-NotoSansThaiUI-Bold.woff') format('woff');
+	
+    font-weight: bold;
+    font-style: normal;
+}
+
+body {
+	font-family: 'Noto-Sans-Thai', sans-serif !important;
+	letter-spacing: 0.6px !important; 
+	line-height: 1.5em;
+}
 
 </style>
 
@@ -355,7 +421,7 @@ function showMapDetail(data) {
 	var html = '';
 	if(data.name) {
 
-		html += '<h2>'+data.name+'</h2>';
+		html += '<h3>'+data.name+'</h3>';
 	}
 
 	if(data.image) {
@@ -366,6 +432,7 @@ function showMapDetail(data) {
 		var title;
 		var slideImage = '<div id="carouselExampleControls" class="carousel slide" data-ride="carousel"> ';
 
+		/* ===============  dot control
 		slideImage += '<ol class="carousel-indicators">';
 		var runNumImage2 = 0;
 		Object.keys(images).forEach(function(key) {
@@ -381,6 +448,8 @@ function showMapDetail(data) {
 
 		slideImage += '</ol>';
 
+		*/
+
 		slideImage += '<div class="carousel-inner"> ';
 
 
@@ -393,17 +462,20 @@ function showMapDetail(data) {
 		    if (runNumImage == 1) {
 		    	itemClass = 'item active';
 		    }
-		    slideImage += '<div class="'+itemClass+'"> <img src="'+url+'" alt="'+title+'"> <div class="carousel-caption d-none d-md-block"><p>'+title+'</p> </div> </div> ';
+		    slideImage += '<div class="'+itemClass+'"> <img src="'+url+'" alt="'+title+'">';
+
+		    if (title) {
+			    slideImage += '<div class="carousel-caption">'+title+'</div>';
+		    }
+		    slideImage += ' </div> ';
 		    runNumImage++;
 
 		});
 
 		slideImage += '</div>'
 
-		slideImage += '<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next"> <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>';
-		slideImage += '</div>'
-
-
+		slideImage += '<a class="left carousel-control" href="#carouselExampleControls" role="button" data-slide="prev"> <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a> <a class="right carousel-control" href="#carouselExampleControls" role="button" data-slide="next"> <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>'; 
+		slideImage += '</div>';
 		html += slideImage;
 
 		$('.carousel').carousel({
@@ -414,37 +486,38 @@ function showMapDetail(data) {
 
 	console.log(data);
 	if(data.address) {
-		html += '<div><span class="label"> Address </span>'+data.address+'</div>';
+		html += '<div><span class="label"> Address: </span>'+data.address+'</div>';
 	}
 
 	if(data.ww2_status) {
-		html += '<div><span class="label"> WW2 status </span>'+data.ww2_status+'</div>';
+		html += '<div><span class="label"> WW2 status: </span>'+data.ww2_status+'</div>';
 	}
 
 	if(data.present_status) {
-		html += '<div><span class="label"> Present status </span>'+data.present_status+'</div>';
+		html += '<div><span class="label"> Present status: </span>'+data.present_status+'</div>';
 	}
 	if(data.founded) {
-		html += '<div><span class="label"> Founded </span>'+data.founded+'</div>';
+		html += '<div><span class="label"> Founded: </span>'+data.founded+'</div>';
 	}
 	if(data.note) {
-		html += '<div><span class="label"> Note </span>'+data.note+'</div>';
+		html += '<div><span class="label"> Note: </span>'+data.note+'</div>';
 	}
 	if(data.reference) {
-		html += '<div><span class="label"> Reference </span>'+data.reference+'</div>';
+		html += '<div><span class="label"> Reference: </span>'+data.reference+'</div>';
 	}
 
 
 	if (data.reference_file) {
 		html += '<div class="ref-file">';
-		html += '<span class="label"> Reference Files</span>'
+		html += '<span class="label"> Reference Files</span>';
+		html += '<ul>';
 		Object.keys(reference_file).forEach(function(key) {
 			url = reference_file[key]['url'];
 		    title = reference_file[key]['title'];
 
-		    html += '<div><a href="'+url+'" target="_blank">'+title+'</a></div>'
+		    html += '<li><a href="'+url+'" target="_blank">'+title+'</a></li>'
 		});
-
+		html += '<ul>';
 		html += '</div>';
 	}
 	$('#info-body').html(html);
