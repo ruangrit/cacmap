@@ -116,7 +116,9 @@ body {
 
 <div class="map-wrapper">
 
-	<div class="map-header">Header</div>
+	<div class="map-header">
+	Header
+	</div>
 	<div class="info-box">infooooooooooo</div>
 
 	<div class="tab-left">Left</div>
@@ -147,6 +149,11 @@ body {
 
 </div>
 
+<?php
+
+	global $language;
+    $lan = $language->language;
+?>
 
 <script>
 
@@ -161,9 +168,10 @@ zoom: 6
 var refreshIntervalId;
 map.on('load', function () {
 	// Add a source for the state polygons.
+	var lan = '<?php print $lan;?>';
 	map.addSource('national-park', {
 	'type': 'geojson',
-	'data': 'http://localhost:8888/map/json',
+	'data': 'http://localhost:8888/'+ lan +'/map/json',
 	});
 	 
 	// Add a layer showing the state polygons.
@@ -179,19 +187,27 @@ map.on('load', function () {
 		'filter': ['==', '$type', 'Polygon'],
 
 	});
+
+/*	map.loadImage('{{asset("sites/all/modules/mymodule/rithook/icon/cat-1.png")}}', function(error, image) {
+	  if (error) throw error;
+	    map.addImage('cat-1', image);
+	  });
+	});
+*/
+
+	map.loadImage('/sites/all/modules/mymodule/rithook/icon/cat-1.png', function(error, image) {
+	    map.addImage('cat-1', image);
+	});
 	 
 	// circle tid is 1 
 	map.addLayer({
 		'id': 'cat-1',
-		'type': 'circle',
+		'type': 'symbol',
 		'source': 'national-park',
-		'paint': {
-		'circle-radius': 10,
-		'circle-color': '#B42222',
-		
-		},
 		'layout': {
-			'visibility': 'visible'
+			'visibility': 'visible',
+			'icon-image': 'cat-1',
+			'icon-size': .4
 		},
 		'filter': ['all',
 			['==', '$type', 'Point'],
@@ -265,7 +281,7 @@ map.on('load', function () {
 		map.getCanvas().style.cursor = '';
 		//==== clear interval
 		//====clearInterval(refreshIntervalId);
-		map.setPaintProperty('cat-1', 'circle-radius', 10);
+		//map.setPaintProperty('cat-1', 'circle-radius', 10);
 	});
 	//===================================
 
@@ -279,25 +295,8 @@ map.on('load', function () {
 
 	// ============================== Cat1
 	map.on('click', 'cat-1', function (e) {
-
-		var clickedLayer = 'cat-1';
+		// Show detail on map
 		
-		console.log(e.features[0]);
-		/*
-		refreshIntervalId = setInterval(() => {
-			var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
-
-			if (visibility === 'visible') {
-				map.setLayoutProperty(clickedLayer, 'visibility', 'none');
-				this.className = '';
-			} else {
-				this.className = 'active';
-				map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
-			}
-
-    	}, 500);
-
-    	*/
 	});
 	map.on('mouseenter', 'cat-1', function (e) {
 		map.getCanvas().style.cursor = 'pointer';
@@ -312,7 +311,7 @@ map.on('load', function () {
 		map.getCanvas().style.cursor = '';
 		//==== clear interval
 		//====clearInterval(refreshIntervalId);
-		map.setPaintProperty('cat-1', 'circle-radius', 10);
+		//map.setPaintProperty('cat-1', 'circle-radius', 10);
 	});
 	//================================
 	 

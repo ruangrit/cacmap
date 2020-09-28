@@ -24,9 +24,13 @@ function rithook_map_object() {
 	$nodes = node_load_multiple(array(), array('type' => $type)); 
 	$geojson_obj = array();
 	$run_num = 0;
+
+    global $language;
+    $lan = $language->language;
+    dpm($language);
 	foreach($nodes as $map) {
 		$geojson_obj[$run_num] = leaflet_widget_geojson_feature($map->field_location['und'][0]['wkt']);
-		$geojson_obj[$run_num]['properties']['name'] = $map->title;
+		$geojson_obj[$run_num]['properties']['name'] = $map->title_field[$lan][0]['value'];
 		$geojson_obj[$run_num]['properties']['nid'] = $map->nid;
 		$geojson_obj[$run_num]['properties']['tid'] = $map->field_ww2_category['und'][0]['tid'];
 		$run_num++;
