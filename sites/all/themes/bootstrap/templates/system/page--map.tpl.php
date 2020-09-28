@@ -401,12 +401,31 @@ function showMapDetail(data) {
 
 		html += slideImage;
 
-		$('#info-body').html(html);
-		$('.carousel').carousel();
-
-		$('.info-box').slideDown();
-
 	}
+
+	console.log(data);
+	if(data.address) {
+		html += '<div><span class="label"> Address </span>'+data.address+'</div>';
+	}
+
+	if(data.ww2_status) {
+		html += '<div><span class="label"> WW2 status </span>'+data.ww2_status+'</div>';
+	}
+
+	if(data.present_status) {
+		html += '<div><span class="label"> Present status </span>'+data.present_status+'</div>';
+	}
+	if(data.founded) {
+		html += '<div><span class="label"> Founded </span>'+data.founded+'</div>';
+	}
+	if(data.note) {
+		html += '<div><span class="label"> Note </span>'+data.note+'</div>';
+	}
+	if(data.reference) {
+		html += '<div><span class="label"> Reference </span>'+data.reference+'</div>';
+	}
+	$('#info-body').html(html);
+	$('.info-box').slideDown();
 }
 
 $( "#menu > a" ).each(function( index ) {
