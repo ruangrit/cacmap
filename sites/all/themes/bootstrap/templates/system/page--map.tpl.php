@@ -2,6 +2,10 @@
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
 <link href="/sites/all/modules/mymodule/rithook/css/map.css" rel="stylesheet" />
 
+<div class="loading">
+	<img src="/sites/all/modules/mymodule/rithook/icon/loading_3.gif"  width="200" />
+</div>
+
 <div class="map-wrapper">
 
 	<div class="map-header col-xs-12">
@@ -94,7 +98,7 @@
 
 <script>
 
-
+$ = jQuery;
 
 mapboxgl.accessToken = 'pk.eyJ1IjoicnVhbmdyaXQiLCJhIjoiY2tlMWFua2VuMGJrdDJ5bXdweWp0M3gyaCJ9.JF08GIkAbniR_wUUVe_80A';
 var map = new mapboxgl.Map({
@@ -105,7 +109,9 @@ var map = new mapboxgl.Map({
 });
  
 var refreshIntervalId;
+
 map.on('load', function () {
+	
 	// Add a source for the state polygons.
 	var lan = '<?php print $lan;?>';
 	map.addSource('national-park', {
@@ -245,11 +251,15 @@ map.on('load', function () {
 		closeOnClick: false
 	});
 
+	loadingDone();
+
 });
 
 
-
-$ = jQuery;
+function loadingDone() {
+	
+	$('.loading').fadeOut();
+}
 
 function showMapDetail(data) {
 
