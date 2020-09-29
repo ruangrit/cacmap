@@ -22,17 +22,16 @@ body {
 }
 
 .info-box {
+	
 	width: 400px;
 	height: 100%;
 	position: absolute;
-	top:0;
-	right: 0;
+	
+	right: 50px;
 	z-index: 201;
 	overflow: scroll;
 	background: #e8d2b0;
-	
 	display: none;
-	
 }
 
 #info-body, #info-header {
@@ -113,6 +112,7 @@ h1 {
 	bottom: 0px;
 	margin-left: 50px;
 	margin-right: 50px;
+	font-size: 85%;
 
 
 }
@@ -126,8 +126,13 @@ h1 {
 
 .tab-right {
 	right: 0px;
+	padding-top: 150px;
 }
-
+.tab-right img {
+	width: 30px;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
 .mapboxgl-popup {
 	max-width: 400px;
 	font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;

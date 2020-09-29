@@ -55,7 +55,12 @@
 		
 	</div>
 	<div id="map"></div>
-	<div class="tab-right">Right</div>
+	<div class="tab-right">
+		
+		<a href="#"><img src="/sites/all/modules/mymodule/rithook/icon/Map-Icon-FB.png"></a>
+		<a href="#"><img src="/sites/all/modules/mymodule/rithook/icon/Map-Icon-IG.png"></a>
+		<a href="#"><img src="/sites/all/modules/mymodule/rithook/icon/Map-Icon-YT.png"></a>
+	</div>
 
 
 
