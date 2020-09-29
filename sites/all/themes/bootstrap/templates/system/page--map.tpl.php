@@ -69,7 +69,15 @@
 
 
 	<div class="map-footer">
-		
+		<?php
+			$label_address = t('Address');
+			$label_ww2_status = t('Status during the WW2');
+			$label_present_status = t('Present status');
+			$label_founded = t('Founded (on/by)');
+			$label_note = t('Note');
+			$label_reference = t('Reference');
+			$label_reference_file = t('File Reference');
+		?>
 		© Chiang Mai Art Conversation and Sutthirat Supaparinya 2020 (cc) BY-NC
 คำประกาศสิทธิ: เนื้อหาในเว็บไซต์ ถือสิทธิโดย " Chiang Mai Art Conversation และสุทธิรัตน์ ศุภปริญญา" แต่สามารถนำไปใช้งานได้ตามเงื่อนไข สัญญาอนุญาต Creative Commons (cc) BY-NC กล่าวคือ ต้องอ้างอิงแหล่งที่มา และไม่ใช้เพื่อการค้า
 	</div>
@@ -86,12 +94,14 @@
 
 <script>
 
+
+
 mapboxgl.accessToken = 'pk.eyJ1IjoicnVhbmdyaXQiLCJhIjoiY2tlMWFua2VuMGJrdDJ5bXdweWp0M3gyaCJ9.JF08GIkAbniR_wUUVe_80A';
 var map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/ruangrit/ckfcshb7e4miq19rw6o4isr00',
-center: [99.0501594543, 18.7249499481],
-zoom: 6.5
+	container: 'map',
+	style: 'mapbox://styles/ruangrit/ckfcshb7e4miq19rw6o4isr00',
+	center: [99.0501594543, 18.7249499481],
+	zoom: 6.5
 });
  
 var refreshIntervalId;
@@ -303,26 +313,36 @@ function showMapDetail(data) {
 
 	}
 
+
+
+	var label_address = '<?php print $label_address;?>';
+	var label_ww2_status = '<?php print $label_ww2_status;?>';
+	var label_present_status = '<?php print $label_present_status;?>';
+	var label_founded = '<?php print $label_founded;?>';
+	var label_note = '<?php print $label_note;?>';
+	var label_reference = '<?php print $label_reference;?>';
+	var label_reference_file = '<?php print $label_reference_file;?>';
+
 	
 	if(data.address) {
-		html += '<div><span class="label"> Address: </span>'+data.address+'</div>';
+		html += '<div><span class="label"> '+label_address+': </span>'+data.address+'</div>';
 	}
 
 	if(data.ww2_status) {
-		html += '<div><span class="label"> WW2 status: </span>'+data.ww2_status+'</div>';
+		html += '<div><span class="label"> '+label_ww2_status+': </span>'+data.ww2_status+'</div>';
 	}
 
 	if(data.present_status) {
-		html += '<div><span class="label"> Present status: </span>'+data.present_status+'</div>';
+		html += '<div><span class="label"> '+label_present_status+': </span>'+data.present_status+'</div>';
 	}
 	if(data.founded) {
-		html += '<div><span class="label"> Founded: </span>'+data.founded+'</div>';
+		html += '<div><span class="label"> '+label_founded+': </span>'+data.founded+'</div>';
 	}
 	if(data.note) {
-		html += '<div><span class="label"> Note: </span>'+data.note+'</div>';
+		html += '<div><span class="label"> '+label_note+': </span>'+data.note+'</div>';
 	}
 	if(data.reference) {
-		html += '<div><span class="label"> Reference: </span>'+data.reference+'</div>';
+		html += '<div><span class="label"> '+label_reference+': </span>'+data.reference+'</div>';
 	}
 
 
@@ -332,7 +352,7 @@ function showMapDetail(data) {
 		var url_file;
 		var title_file;
 		html += '<div class="ref-file">';
-		html += '<span class="label"> Reference Files</span>';
+		html += '<span class="label"> '+label_reference_file+'</span>';
 		html += '<ul>';
 		Object.keys(reference_file).forEach(function(key) {
 			url_file = reference_file[key]['url'];
