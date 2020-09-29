@@ -100,8 +100,8 @@ map.on('load', function () {
 	'type': 'geojson',
 	'data': 'http://localhost:8888/'+ lan +'/map/json',
 	});
-	 
-	// Add a layer showing the state polygons.
+
+// Add a layer showing the state polygons.
 // Add a symbol layer
 	map.addLayer({
 		'id': 'park-boundary',
@@ -113,52 +113,6 @@ map.on('load', function () {
 		},
 		'filter': ['==', '$type', 'Polygon'],
 
-	});
-
-/*	map.loadImage('{{asset("sites/all/modules/mymodule/rithook/icon/cat-1.png")}}', function(error, image) {
-	  if (error) throw error;
-	    map.addImage('cat-1', image);
-	  });
-	});
-*/
-
-	map.loadImage('/sites/all/modules/mymodule/rithook/icon/cat-1.png', function(error, image) {
-	    map.addImage('cat-1', image);
-	});
-	 
-	// circle tid is 1 
-	map.addLayer({
-		'id': 'cat-1',
-		'type': 'symbol',
-		'source': 'national-park',
-		'layout': {
-			'visibility': 'visible',
-			'icon-image': 'cat-1',
-			'icon-size': .4
-		},
-		'filter': ['all',
-			['==', '$type', 'Point'],
-			['==', 'tid', '1']
-			]
-	});
-
-	// circle tid is 2
-	map.addLayer({
-		'id': 'cat-2',
-		'type': 'circle',
-		'source': 'national-park',
-		'paint': {
-		'circle-radius': 10,
-		'circle-color': '#2f7f59'
-		},
-		'layout': {
-			'visibility': 'visible'
-		},
-
-		'filter': ['all',
-			['==', '$type', 'Point'],
-			['==', 'tid', '2']
-			]
 	});
 
 	map.addLayer({
@@ -176,15 +130,96 @@ map.on('load', function () {
 		'filter': ['==', '$type', 'LineString']
 	});
 
+	map.loadImage('/sites/all/modules/mymodule/rithook/icon/cat-1.png', function(error, image) {
+	    map.addImage('cat-1', image);
+	});
+	map.loadImage('/sites/all/modules/mymodule/rithook/icon/cat-2.png', function(error, image) {
+	    map.addImage('cat-2', image);
+	});
+	map.loadImage('/sites/all/modules/mymodule/rithook/icon/cat-3.png', function(error, image) {
+	    map.addImage('cat-3', image);
+	});
+	map.loadImage('/sites/all/modules/mymodule/rithook/icon/cat-5.png', function(error, image) {
+	    map.addImage('cat-5', image);
+	});
+	map.loadImage('/sites/all/modules/mymodule/rithook/icon/cat-7.png', function(error, image) {
+	    map.addImage('cat-7', image);
+	});
+
+	// ============================== Add layer and Event for cat 1, 2, 3, 5, 7
+	var iconSize = .4; 
+	var pointCatId = [1, 2, 3, 5, 7];
+	var catId;
+	var arrayLength = pointCatId.length;
+	for (var i = 0; i < arrayLength; i++) {
+	    catId = pointCatId[i];
+		//console.log(catId);
+
+	    // Add layer
+
+	   	map.addLayer({
+			'id': 'cat-'+catId,
+			'type': 'symbol',
+			'source': 'national-park',
+			'layout': {
+				'visibility': 'visible',
+				'icon-image': 'cat-'+catId,
+				'icon-size': iconSize
+			},
+			'filter': ['all',
+				['==', '$type', 'Point'],
+				['==', 'tid', catId.toString()]
+				]
+		});
+	    
+	    // Bind event
+
+	    map.on('click', 'cat-'+catId, function (e) {
+			showMapDetail(e.features[0].properties);
+		
+		});
+
+		map.on('mouseenter', 'cat-'+catId, function (e) {
+			map.getCanvas().style.cursor = 'pointer';
+			var coordinates = e.features[0].geometry.coordinates.slice();
+			var description = e.features[0].properties.name;
+			popup.setLngLat(coordinates).setHTML(description).addTo(map);
+
+		});
+		 
+		map.on('mouseleave', 'cat-'+catId, function () {
+			popup.remove();
+			map.getCanvas().style.cursor = '';
+		});
+
+
+	}
+	/*
+	map.on('click', 'cat-1', function (e) {
+		// Show detail on map
+		showMapDetail(e.features[0].properties);
+		
+	});
+	map.on('mouseenter', 'cat-1', function (e) {
+		map.getCanvas().style.cursor = 'pointer';
+		var coordinates = e.features[0].geometry.coordinates.slice();
+		var description = e.features[0].properties.name;
+		popup.setLngLat(coordinates).setHTML(description).addTo(map);
+
+	});
+	 
+	map.on('mouseleave', 'cat-1', function () {
+		popup.remove();
+		map.getCanvas().style.cursor = '';
+	});
+	*/
+
 	// Create a popup, but don't add it to the map yet.
 	var popup = new mapboxgl.Popup({
 		closeButton: false,
 		closeOnClick: false
 	});
 
-
-
-	 
 	// When a click event occurs on a feature in the states layer, open a popup at the
 	// location of the click, with description HTML from its properties.
 	map.on('click', 'route', function (e) {
@@ -220,27 +255,6 @@ map.on('load', function () {
 		.addTo(map);
 	});
 
-	// ============================== Cat1
-	map.on('click', 'cat-1', function (e) {
-		// Show detail on map
-		showMapDetail(e.features[0].properties);
-		
-	});
-	map.on('mouseenter', 'cat-1', function (e) {
-		map.getCanvas().style.cursor = 'pointer';
-		var coordinates = e.features[0].geometry.coordinates.slice();
-		var description = e.features[0].properties.name;
-		popup.setLngLat(coordinates).setHTML(description).addTo(map);
-
-	});
-	 
-	map.on('mouseleave', 'cat-1', function () {
-		popup.remove();
-		map.getCanvas().style.cursor = '';
-		//==== clear interval
-		//====clearInterval(refreshIntervalId);
-		//map.setPaintProperty('cat-1', 'circle-radius', 10);
-	});
 	//================================
 	 
 	// Change the cursor to a pointer when the mouse is over the states layer.
