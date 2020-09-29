@@ -116,7 +116,7 @@ map.on('load', function () {
 // Add a layer showing the state polygons.
 // Add a symbol layer
 	map.addLayer({
-		'id': 'cat-4',
+		'id': 'cat-4-add',
 		'type': 'fill',
 		'source': 'national-park',
 		'paint': {
@@ -144,7 +144,7 @@ map.on('load', function () {
 	});
 
 	// ======================= route and area event ======================
-	var extraCatId = ['cat-4', 'cat-6'];
+	var extraCatId = ['cat-4-add', 'cat-6'];
 	var arrayLength = extraCatId.length;
 	var catId;
 	for (var i = 0; i < arrayLength; i++) {
@@ -181,6 +181,9 @@ map.on('load', function () {
 	map.loadImage('/sites/all/modules/mymodule/rithook/icon/cat-3.png', function(error, image) {
 	    map.addImage('cat-3', image);
 	});
+	map.loadImage('/sites/all/modules/mymodule/rithook/icon/cat-4.png', function(error, image) {
+	    map.addImage('cat-4', image);
+	});
 	map.loadImage('/sites/all/modules/mymodule/rithook/icon/cat-5.png', function(error, image) {
 	    map.addImage('cat-5', image);
 	});
@@ -190,7 +193,7 @@ map.on('load', function () {
 
 	// ============================== Add layer and Event for cat 1, 2, 3, 5, 7
 	var iconSize = .4; 
-	var pointCatId = [1, 2, 3, 5, 7];
+	var pointCatId = [1, 2, 3, 4, 5, 7];
 	var catId;
 	var arrayLength = pointCatId.length;
 	for (var i = 0; i < arrayLength; i++) {
@@ -386,11 +389,27 @@ $( "#menu > a" ).each(function( index ) {
 		 
 		// toggle layer visibility by changing the layout object's visibility property
 		if (is_active) {
-			map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+
+			if (map.getLayer(clickedLayer)) {
+				map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+			}
+
+			if (map.getLayer(clickedLayer+'-add')) {
+				map.setLayoutProperty(clickedLayer+'-add', 'visibility', 'none');
+			}
+
 			this.className = '';
 		} else {
+
 			this.className = 'active';
-			map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+			if (map.getLayer(clickedLayer)) {
+				map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+			}
+
+			if (map.getLayer(clickedLayer+'-add')) {
+				map.setLayoutProperty(clickedLayer+'-add', 'visibility', 'visible');
+			}
+			
 		}
 	})
 });
