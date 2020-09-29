@@ -59,9 +59,9 @@
 	<div id="map"></div>
 	<div class="tab-right">
 		
-		<a href="#"><img src="/sites/all/modules/mymodule/rithook/icon/Map-Icon-FB.png"></a>
-		<a href="#"><img src="/sites/all/modules/mymodule/rithook/icon/Map-Icon-IG.png"></a>
-		<a href="#"><img src="/sites/all/modules/mymodule/rithook/icon/Map-Icon-YT.png"></a>
+		<a href="https://www.facebook.com/cmartconversation" target="_blank"><img src="/sites/all/modules/mymodule/rithook/icon/Map-Icon-FB.png"></a>
+		<a href="https://www.instagram.com/art.conversation" target="_blank"><img src="/sites/all/modules/mymodule/rithook/icon/Map-Icon-IG.png"></a>
+		<a href="https://www.youtube.com/user/CMartconversation" target="_blank"><img src="/sites/all/modules/mymodule/rithook/icon/Map-Icon-YT.png"></a>
 	</div>
 
 
