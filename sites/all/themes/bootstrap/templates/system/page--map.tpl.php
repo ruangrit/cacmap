@@ -1,214 +1,22 @@
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
-<style>
-#map { 
-	position: absolute;
-	top: 0;
-	bottom: 0;
-	width: 100%;
-	height: 100%;
-	
-}
-
-body { 
-	margin: 0; 
-	padding: 0; 
-	position: inherit;
-}
-
-.map-wrapper {
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	
-	
-}
-
-.info-box {
-	width: 400px;
-	height: 100%;
-	position: absolute;
-	top:0;
-	right: 0;
-	z-index: 201;
-	overflow: scroll;
-	background: #e8d2b0;
-	
-	display: none;
-	
-}
-
-#info-body, #info-header {
-	margin: 12px;
-	
-}
-
-.close {
-	opacity: 1 !important;
-}
-
-h1 {
-	font-weight: bold;
-	font-size: 25px !important;
-}
-#info-body h3, #info-body .label {
-	color: #6b430a;
-	font-weight: bold;
-}
-
-#info-body .label {
-	font-size: 90% !important;
-	padding: 0px !important;
-}
-
-#info-body, #info-body li a {
-	color: #866535;
-	
-}
-
-#info-body li a {
-	
-	font-size: 85%;
-}
-
-#info-body .ref-file {
-	border-top: 1px dotted #6b430a;
-}
-
-#carouselExampleControls {
-	margin-bottom: 10px;
-}
-
-.carousel-caption {
-	position: unset !important;
-	text-shadow: none;
-	color: #6b430a !important;
-	font-size: 85%;
-	padding-top: 5px !important;
-	padding-bottom: 5px !important;
-
-}
-
-
-.map-header, .map-footer {
-	height: 50px;
-	position: absolute;
-	z-index: 200;
-	
-}
-
-.map-header {
-	padding-left: 50px;
-}
-
-.map-header, .map-footer, .tab-left, .tab-right {
-	background: #fff;
-} 
-
-.map-footer {
-	bottom: 0px;
-	margin-left: 50px;
-	margin-right: 50px;
-
-
-}
-.tab-left, .tab-right {
-	position: absolute;
-	z-index: 200;
-	width: 50px;
-	height: 100%;
-	
-}
-
-.tab-right {
-	right: 0px;
-}
-
-.mapboxgl-popup {
-	max-width: 400px;
-	font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
-}
-
-
-#menu {
-	background: #fff;
-	position: absolute;
-	z-index: 1;
-	top: 80px;
-	left: 80px;
-	border-radius: 3px;
-	padding: 5px;
-}
- 
-#menu a {
-	font-size: 13px;
-	color: #404040;
-	display: block;
-	margin: 0;
-	padding: 0;
-	padding: 10px;
-	text-decoration: none;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-	z-index: 999;
-}
- 
-#menu a:last-child {
-	border: none;
-}
- 
-#menu a:hover {
-	background-color: #618d9e;
-	color: #404040;
-}
- 
-#menu a.active {
-	background-color: #446c7b;
-	color: #ffffff;
-}
- 
-#menu a.active:hover {
-	background: #3074a4;
-}
-
-
-@font-face {
-    font-family: 'Noto-Sans-Thai';
-    src: url('/sites/all/modules/mymodule/rithook/font/subset-NotoSansThaiUI-Regular.woff2') format('woff2'),
-         url('/sites/all/modules/mymodule/rithook/font/subset-NotoSansThaiUI-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'Noto-Sans-Thai';
-    src: url('/sites/all/modules/mymodule/rithook/font/subset-NotoSansThaiUI-Bold.woff2') format('woff2'),
-         url('/sites/all/modules/mymodule/rithook/font/subset-NotoSansThaiUI-Bold.woff') format('woff');
-	
-    font-weight: bold;
-    font-style: normal;
-}
-
-body {
-	font-family: 'Noto-Sans-Thai', sans-serif !important;
-	letter-spacing: 0.6px !important; 
-	line-height: 1.5em;
-}
-
-</style>
+<link href="/sites/all/modules/mymodule/rithook/css/map.css" rel="stylesheet" />
 
 <div class="map-wrapper">
 
 	<div class="map-header col-xs-12">
 		<div class="col-xs-7">
 
-			<h1>WW2 SITES NTH</h1>
+			<img src="/sites/all/modules/mymodule/rithook/icon/Map-Icon-WW2title.png">
 		</div>
 
-		<div class="col-xs-3">
-		th en jp 
+		<div class="col-xs-3 lan-switch">
+			<a href="/map" class="th">TH</a>
+			<a href="/en/map" class="en">EN</a>
+			<a href="/ja/map" class="ja">JP</a>
 		</div>
-		<div class="col-xs-2">
-		ABOUT
+		<div class="col-xs-2 about">
+			<a href="#" class="about-link">ABOUT</a>	
 		</div>
 	</div>
 

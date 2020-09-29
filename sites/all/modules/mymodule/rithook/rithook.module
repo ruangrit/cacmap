@@ -106,8 +106,6 @@ function rithook_map_object() {
 
 function rithook_map_page () {
 
-
-
     return theme('rithook_map_page', array('title' => 'Testing'));
 }
 
