@@ -104,11 +104,11 @@ map.on('load', function () {
 // Add a layer showing the state polygons.
 // Add a symbol layer
 	map.addLayer({
-		'id': 'park-boundary',
+		'id': 'area',
 		'type': 'fill',
 		'source': 'national-park',
 		'paint': {
-		'fill-color': '#FF0000',
+		'fill-color': '#000000',
 		'fill-opacity': 0.4
 		},
 		'filter': ['==', '$type', 'Polygon'],
@@ -124,11 +124,40 @@ map.on('load', function () {
 		'line-cap': 'round'
 		},
 		'paint': {
-			'line-color': '#753259',
+			'line-color': '#2c5a0b',
 			'line-width': 3
 		},
 		'filter': ['==', '$type', 'LineString']
 	});
+
+	// ======================= route and area event ======================
+	var extraCatId = ['route', 'area'];
+	var arrayLength = extraCatId.length;
+	var catId;
+	for (var i = 0; i < arrayLength; i++) {
+	    catId = extraCatId[i];
+
+
+	    map.on('click', catId, function (e) {
+			showMapDetail(e.features[0].properties);
+		
+		});
+
+		map.on('mouseenter', catId, function (e) {
+			map.getCanvas().style.cursor = 'pointer';
+			var coordinates = e.lngLat;
+			var description = e.features[0].properties.name;
+			popup.setLngLat(coordinates).setHTML(description).addTo(map);
+
+		});
+		 
+		map.on('mouseleave', catId, function () {
+			popup.remove();
+			map.getCanvas().style.cursor = '';
+		});
+
+	}
+
 
 	map.loadImage('/sites/all/modules/mymodule/rithook/icon/cat-1.png', function(error, image) {
 	    map.addImage('cat-1', image);
@@ -194,78 +223,12 @@ map.on('load', function () {
 
 
 	}
-	/*
-	map.on('click', 'cat-1', function (e) {
-		// Show detail on map
-		showMapDetail(e.features[0].properties);
-		
-	});
-	map.on('mouseenter', 'cat-1', function (e) {
-		map.getCanvas().style.cursor = 'pointer';
-		var coordinates = e.features[0].geometry.coordinates.slice();
-		var description = e.features[0].properties.name;
-		popup.setLngLat(coordinates).setHTML(description).addTo(map);
-
-	});
-	 
-	map.on('mouseleave', 'cat-1', function () {
-		popup.remove();
-		map.getCanvas().style.cursor = '';
-	});
-	*/
-
 	// Create a popup, but don't add it to the map yet.
 	var popup = new mapboxgl.Popup({
 		closeButton: false,
 		closeOnClick: false
 	});
 
-	// When a click event occurs on a feature in the states layer, open a popup at the
-	// location of the click, with description HTML from its properties.
-	map.on('click', 'route', function (e) {
-		new mapboxgl.Popup()
-		.setLngLat(e.lngLat)
-		.setHTML(e.features[0].properties.name)
-		.addTo(map);
-
-	});
-
-	map.on('mouseenter', 'route', function (e) {
-		map.getCanvas().style.cursor = 'pointer';
-		var coordinates = e.lngLat;
-		var description = e.features[0].properties.name;
-		popup.setLngLat(coordinates).setHTML(description).addTo(map);
-
-	});
-	 
-	map.on('mouseleave', 'route', function () {
-		popup.remove();
-		map.getCanvas().style.cursor = '';
-		//==== clear interval
-		//====clearInterval(refreshIntervalId);
-		//map.setPaintProperty('cat-1', 'circle-radius', 10);
-	});
-	//===================================
-
-
-	map.on('click', 'park-boundary', function (e) {
-		new mapboxgl.Popup()
-		.setLngLat(e.lngLat)
-		.setHTML(e.features[0].properties.name)
-		.addTo(map);
-	});
-
-	//================================
-	 
-	// Change the cursor to a pointer when the mouse is over the states layer.
-	map.on('mouseenter', 'route', function () {
-		map.getCanvas().style.cursor = 'pointer';
-	});
-	 
-	// Change it back to a pointer when it leaves.
-	map.on('mouseleave', 'route', function () {
-		map.getCanvas().style.cursor = '';
-	});
 });
 
 
