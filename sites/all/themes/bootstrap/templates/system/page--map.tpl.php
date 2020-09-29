@@ -100,12 +100,15 @@
 
 $ = jQuery;
 
+var mapCenter = [99.0501594543, 18.7249499481];
+var zoomDefault = 6.5;
+
 mapboxgl.accessToken = 'pk.eyJ1IjoicnVhbmdyaXQiLCJhIjoiY2tlMWFua2VuMGJrdDJ5bXdweWp0M3gyaCJ9.JF08GIkAbniR_wUUVe_80A';
 var map = new mapboxgl.Map({
 	container: 'map',
 	style: 'mapbox://styles/ruangrit/ckfcshb7e4miq19rw6o4isr00',
-	center: [99.0501594543, 18.7249499481],
-	zoom: 6.5
+	center: mapCenter,
+	zoom: zoomDefault
 });
  
 var refreshIntervalId;
@@ -227,6 +230,7 @@ map.on('load', function () {
 
 	    map.on('click', 'cat-'+catId, function (e) {
 			showMapDetail(e.features[0].properties);
+			goToPlace(e.lngLat);
 		
 		});
 
@@ -385,10 +389,16 @@ function showMapDetail(data) {
 $('.close-info-box').click(function () {
 
 	$('.info-box').slideUp();
+	goOriginal();
 });
 
 $( "#menu > a" ).each(function( index ) {
+
 	$(this).click(function(e) {
+
+		goOriginal();
+
+
 		$('.info-box').slideUp();
 		// Todo fixbug when interval on
 		clearInterval(refreshIntervalId);
@@ -423,6 +433,43 @@ $( "#menu > a" ).each(function( index ) {
 		}
 	})
 });
+
+function goOriginal() {
+
+	map.flyTo({
+
+		center: mapCenter,
+		zoom: zoomDefault,
+		bearing: 0,
+		 
+		speed: 0.7, // make the flying slow
+		curve: 1, // change the speed at which it zooms out
+		 
+		easing: function (t) {
+			return t;
+		},
+		essential: true
+	});
+
+}
+
+function goToPlace(lngLat) {
+
+	map.flyTo({
+
+		center: lngLat,
+		zoom: 11,
+		bearing: 0,
+		 
+		speed: 0.8, // make the flying slow
+		curve: 1, // change the speed at which it zooms out
+		 
+		easing: function (t) {
+			return t;
+		},
+		essential: true
+	});
+}
 
 </script>
 
