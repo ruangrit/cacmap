@@ -28,7 +28,9 @@
 			$vocabulary = taxonomy_vocabulary_machine_name_load('ww2_category');
 			$terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
 			foreach ($terms as $term) {
-	 			print '<a class="active" id="cat-'.$term->tid.'" href="#">'.$term->name.'</a>';
+	 			print '<a class="active" id="cat-'.$term->tid.'" href="#">';
+	 			print '<img width="20px" src="/sites/all/modules/mymodule/rithook/icon/cat-'.$term->tid.'.png" > ';
+	 			print $term->name.'</a>';
 			}
 
 
@@ -89,7 +91,7 @@ var map = new mapboxgl.Map({
 container: 'map',
 style: 'mapbox://styles/ruangrit/ckfcshb7e4miq19rw6o4isr00',
 center: [99.0501594543, 18.7249499481],
-zoom: 6
+zoom: 6.5
 });
  
 var refreshIntervalId;
@@ -104,19 +106,20 @@ map.on('load', function () {
 // Add a layer showing the state polygons.
 // Add a symbol layer
 	map.addLayer({
-		'id': 'area',
+		'id': 'cat-4',
 		'type': 'fill',
 		'source': 'national-park',
 		'paint': {
-		'fill-color': '#000000',
-		'fill-opacity': 0.4
+			'fill-color': '#e0d61f',
+			'fill-opacity': 0.7,
+			'fill-outline-color': '#000',
 		},
 		'filter': ['==', '$type', 'Polygon'],
 
 	});
 
 	map.addLayer({
-		'id': 'route',
+		'id': 'cat-6',
 		'type': 'line',
 		'source': 'national-park',
 		'layout': {
@@ -124,14 +127,14 @@ map.on('load', function () {
 		'line-cap': 'round'
 		},
 		'paint': {
-			'line-color': '#2c5a0b',
+			'line-color': '#e0d61f',
 			'line-width': 3
 		},
 		'filter': ['==', '$type', 'LineString']
 	});
 
 	// ======================= route and area event ======================
-	var extraCatId = ['route', 'area'];
+	var extraCatId = ['cat-4', 'cat-6'];
 	var arrayLength = extraCatId.length;
 	var catId;
 	for (var i = 0; i < arrayLength; i++) {
