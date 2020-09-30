@@ -20,7 +20,7 @@
 			<a href="/ja/map" class="ja">JP</a>
 		</div>
 		<div class="col-xs-2 about">
-			<a href="#" class="about-link">ABOUT</a>	
+			<a href="#" class="about-link" data-toggle="modal" data-target="#exampleModalLong">ABOUT</a>	
 		</div>
 	</div>
 
@@ -80,7 +80,7 @@
 			$label_founded = t('Founded (on/by)');
 			$label_note = t('Note');
 			$label_reference = t('Reference');
-			$label_reference_file = t('File Reference');
+			$label_reference_file = t('Reference paper file');
 		?>
 		© Chiang Mai Art Conversation and Sutthirat Supaparinya 2020 (cc) BY-NC
 คำประกาศสิทธิ: เนื้อหาในเว็บไซต์ ถือสิทธิโดย " Chiang Mai Art Conversation และสุทธิรัตน์ ศุภปริญญา" แต่สามารถนำไปใช้งานได้ตามเงื่อนไข สัญญาอนุญาต Creative Commons (cc) BY-NC กล่าวคือ ต้องอ้างอิงแหล่งที่มา และไม่ใช้เพื่อการค้า
@@ -94,7 +94,32 @@
 
 	global $language;
     $lan = $language->language;
+
+    // Load about content
+    $about = node_load(12);
+    $about_content = $about->body[$lan][0]['value'];
 ?>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">ABOUT</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <?php print $about_content;?>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
 
 <script>
 
@@ -129,8 +154,8 @@ map.on('load', function () {
 		'type': 'fill',
 		'source': 'national-park',
 		'paint': {
-			'fill-color': '#e0d61f',
-			'fill-opacity': 0.7,
+			'fill-color': '#b0260d',
+			'fill-opacity': 0.4,
 			'fill-outline-color': '#000',
 		},
 		'filter': ['==', '$type', 'Polygon'],
