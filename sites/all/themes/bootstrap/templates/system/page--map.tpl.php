@@ -92,8 +92,8 @@
 			$label_reference = t('Reference');
 			$label_reference_file = t('Reference paper file');
 		?>
-		© Chiang Mai Art Conversation and Sutthirat Supaparinya 2020 (cc) BY-NC
-คำประกาศสิทธิ: เนื้อหาในเว็บไซต์ ถือสิทธิโดย " Chiang Mai Art Conversation และสุทธิรัตน์ ศุภปริญญา" แต่สามารถนำไปใช้งานได้ตามเงื่อนไข สัญญาอนุญาต Creative Commons (cc) BY-NC กล่าวคือ ต้องอ้างอิงแหล่งที่มา และไม่ใช้เพื่อการค้า
+		© Chiang Mai Art Conversation 2020(cc) BY-NC. Unless otherwise noted.
+คำประกาศสิทธิ: เนื้อหาในเว็บไซต์ ถือสิทธิโดย " Chiang Mai Art Conversation " เว้นแต่ได้ระบุเป็นอย่างอื่นไว้ สามารถนำไปใช้งานได้ตามเงื่อนไข สัญญาอนุญาต Creative Commons (cc) BY-NC กล่าวคือ ต้องอ้างอิงแหล่งที่มา และไม่ใช้เพื่อการค้า
 	</div>
 	
 
