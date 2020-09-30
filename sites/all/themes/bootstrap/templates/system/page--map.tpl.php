@@ -9,15 +9,25 @@
 <div class="map-wrapper">
 
 	<div class="map-header col-xs-12">
-		<div class="col-xs-7">
+		<div class="col-xs-4">
 
 			<img src="/sites/all/modules/mymodule/rithook/icon/Map-Icon-WW2title.png">
 		</div>
 
-		<div class="col-xs-3 lan-switch">
-			<a href="/map" class="th">TH</a>
-			<a href="/en/map" class="en">EN</a>
-			<a href="/ja/map" class="ja">JP</a>
+		<div class="col-xs-6 lan-switch">
+
+			<?php
+
+			function _return_language_object($langCode){ 
+			    $languages = language_list(); 
+			    return $languages[$langCode];
+			}
+
+
+			?>
+			<?php print l('ภาษาไทย', '<front>', array('language' => _return_language_object('th')));?>
+			<?php print l('English', '<front>', array('language' => _return_language_object('en')));?>
+			<?php print l('日本語', '<front>', array('language' => _return_language_object('ja')));?>
 		</div>
 		<div class="col-xs-2 about">
 			<a href="#" class="about-link" data-toggle="modal" data-target="#exampleModalLong">ABOUT</a>	
@@ -154,7 +164,7 @@ map.on('load', function () {
 		'type': 'fill',
 		'source': 'national-park',
 		'paint': {
-			'fill-color': '#b0260d',
+			'fill-color': '#FFF',
 			'fill-opacity': 0.4,
 			'fill-outline-color': '#000',
 		},
