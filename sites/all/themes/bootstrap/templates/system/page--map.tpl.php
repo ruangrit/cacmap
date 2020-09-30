@@ -9,9 +9,9 @@
 <div class="map-wrapper">
 
 	<div class="map-header col-xs-12">
-		<div class="col-xs-4">
+		<div class="col-xs-4 image-logo">
 
-			<img src="/sites/all/modules/mymodule/rithook/icon/Map-Icon-WW2title.png">
+			<img src="/sites/all/modules/mymodule/rithook/images/Map-Icon-WW2title2.png">
 		</div>
 
 		<div class="col-xs-6 lan-switch">

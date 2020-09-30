@@ -35,6 +35,14 @@ body {
 	
 }
 
+.image-logo img{
+	height: 20px;
+	margin-top: 15px;
+}
+.image-logo {
+	padding-left: 0px !important;
+}
+
 .info-box {
 
 	width: 400px;
@@ -191,6 +199,13 @@ h1 {
 	background: #3074a4;
 }
 
+.modal {
+	color: #68420c;
+
+}
+.modal h5 {
+	font-weight: bold;
+}
 
 
 @font-face {
