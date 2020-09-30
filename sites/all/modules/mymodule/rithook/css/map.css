@@ -44,7 +44,7 @@ body {
 	right: 50px;
 	z-index: 201;
 	overflow: scroll;
-	background: #e8d2b0;
+	background: #7397a4;
 	display: none;
 }
 
@@ -62,27 +62,25 @@ h1 {
 	font-size: 25px !important;
 }
 #info-body h3, #info-body .label {
-	color: #6b430a;
+	color: #fff;
 	font-weight: bold;
 }
 
 #info-body .label {
-	font-size: 90% !important;
+	font-size: 100% !important;
 	padding: 0px !important;
+	text-decoration: underline;
+	line-height: 2em;
 }
 
 #info-body, #info-body li a {
-	color: #866535;
+	color: #fff;
 	
 }
 
 #info-body li a {
 	
 	font-size: 85%;
-}
-
-#info-body .ref-file {
-	border-top: 1px dotted #6b430a;
 }
 
 #carouselExampleControls {
@@ -92,7 +90,7 @@ h1 {
 .carousel-caption {
 	position: unset !important;
 	text-shadow: none;
-	color: #6b430a !important;
+	color: #fff !important;
 	font-size: 85%;
 	padding-top: 5px !important;
 	padding-bottom: 5px !important;

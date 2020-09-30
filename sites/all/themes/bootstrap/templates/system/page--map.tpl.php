@@ -342,24 +342,24 @@ function showMapDetail(data) {
 
 	
 	if(data.address) {
-		html += '<div><span class="label"> '+label_address+': </span>'+data.address+'</div>';
+		html += '<div><span class="label"> '+label_address+':</span> '+data.address+'</div>';
 	}
 
 	if(data.ww2_status) {
-		html += '<div><span class="label"> '+label_ww2_status+': </span>'+data.ww2_status+'</div>';
+		html += '<div><span class="label"> '+label_ww2_status+':</span> '+data.ww2_status+'</div>';
 	}
 
 	if(data.present_status) {
-		html += '<div><span class="label"> '+label_present_status+': </span>'+data.present_status+'</div>';
+		html += '<div><span class="label"> '+label_present_status+':</span> '+data.present_status+'</div>';
 	}
 	if(data.founded) {
-		html += '<div><span class="label"> '+label_founded+': </span>'+data.founded+'</div>';
+		html += '<div><span class="label"> '+label_founded+':</span> '+data.founded+'</div>';
 	}
 	if(data.note) {
-		html += '<div><span class="label"> '+label_note+': </span>'+data.note+'</div>';
+		html += '<div><span class="label"> '+label_note+':</span> '+data.note+'</div>';
 	}
 	if(data.reference) {
-		html += '<div><span class="label"> '+label_reference+': </span>'+data.reference+'</div>';
+		html += '<div><span class="label"> '+label_reference+':</span> '+data.reference+'</div>';
 	}
 
 
