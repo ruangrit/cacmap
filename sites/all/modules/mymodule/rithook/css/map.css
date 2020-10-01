@@ -295,8 +295,11 @@ body {
 	}
 
 	.info-box {
-		width:200px;
-		right: 25px;
+		width:100%;
+		bottom: 0px;
+		height: 200px;
+		right: 0px;
+
 	}
 
 	#info-body, #info-body li a {
