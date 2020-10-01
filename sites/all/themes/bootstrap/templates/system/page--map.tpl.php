@@ -5,7 +5,11 @@
 
 <?php 
 
-	if(!$logged_in) {
+	if(isset($_GET['ww2']) && $_GET['ww2'] == 'qazsdwef220597') {
+
+	}
+	else {
+
 
 		$text = '<h2>The site is UNDER CONSTRUCTION</h2>';
 
@@ -75,9 +79,36 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 
 
 			?>
-			<?php print l('ภาษาไทย', '<front>', array('language' => _return_language_object('th')));?>
-			<?php print l('English', '<front>', array('language' => _return_language_object('en')));?>
-			<?php print l('日本語', '<front>', array('language' => _return_language_object('ja')));?>
+			<?php 
+
+			print l('ภาษาไทย', '<front>', 
+				array(
+					'language' => _return_language_object('th'),
+					'query' => array(
+
+							'ww2' => $_GET['ww2'],
+					),
+				)
+			);
+			print l('English', '<front>', 
+				array(
+					'language' => _return_language_object('en'),
+					'query' => array(
+
+							'ww2' => $_GET['ww2'],
+					),
+				)
+			);
+			print l('日本語', '<front>', 
+				array(
+					'language' => _return_language_object('ja'),
+					'query' => array(
+
+							'ww2' => $_GET['ww2'],
+					),
+				)
+			);
+			?>
 		</div>
 		<div class="col-xs-2 about">
 			<a href="#" class="about-link" data-toggle="modal" data-target="#exampleModalLong">ABOUT</a>	
