@@ -75,7 +75,6 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 
 
 			?>
-			<?php print $logged_in.'xxxxxxxx';?>
 			<?php print l('ภาษาไทย', '<front>', array('language' => _return_language_object('th')));?>
 			<?php print l('English', '<front>', array('language' => _return_language_object('en')));?>
 			<?php print l('日本語', '<front>', array('language' => _return_language_object('ja')));?>
