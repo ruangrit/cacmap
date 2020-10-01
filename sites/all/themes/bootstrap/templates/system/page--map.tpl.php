@@ -174,7 +174,7 @@ map.on('load', function () {
 	var lan = '<?php print $lan;?>';
 	map.addSource('national-park', {
 	'type': 'geojson',
-	'data': 'http://localhost:8888/'+ lan +'/map/json',
+	'data': '/'+ lan +'/map/json',
 	});
 
 // Add a layer showing the state polygons.
