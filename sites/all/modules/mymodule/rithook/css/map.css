@@ -257,7 +257,7 @@ body {
 }
 
 
-@media (max-width:801px)  {
+@media (max-width:991px)  {
 	.image-logo img {
 		height: 12px;
 	}
@@ -302,6 +302,7 @@ body {
 		bottom: 0px;
 		height: 200px;
 		right: 0px;
+		border-top: 4px solid #fff;
 
 	}
 

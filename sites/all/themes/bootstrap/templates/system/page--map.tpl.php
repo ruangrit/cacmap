@@ -414,7 +414,7 @@ function showMapDetail(data) {
 
 		var url;
 		var title;
-		var slideImage = '<div id="carouselExampleControls" class="carousel slide  col-sm-12 col-xs-6 col-md-12" data-ride="carousel"> ';
+		var slideImage = '<div id="carouselExampleControls" class="carousel slide  col-sm-6 col-xs-6 col-md-12" data-ride="carousel"> ';
 
 		/* ===============  dot control
 		slideImage += '<ol class="carousel-indicators">';
@@ -475,7 +475,7 @@ function showMapDetail(data) {
 	var label_reference = '<?php print $label_reference;?>';
 	var label_reference_file = '<?php print $label_reference_file;?>';
 
-	html += '<div class="col-sm-12 col-xs-6 col-md-12">';
+	html += '<div class="col-sm-6 col-xs-6 col-md-12">';
 	
 	if(data.address) {
 		html += '<div><span class="label"> '+label_address+':</span> '+data.address+'</div>';
