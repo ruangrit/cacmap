@@ -81,7 +81,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 			?>
 			<?php 
 
-			print l('ภาษาไทย', '<front>', 
+			print l('TH', '<front>', 
 				array(
 					'language' => _return_language_object('th'),
 					'query' => array(
@@ -90,7 +90,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 					),
 				)
 			);
-			print l('English', '<front>', 
+			print l('EN', '<front>', 
 				array(
 					'language' => _return_language_object('en'),
 					'query' => array(
@@ -99,7 +99,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 					),
 				)
 			);
-			print l('日本語', '<front>', 
+			print l('JP', '<front>', 
 				array(
 					'language' => _return_language_object('ja'),
 					'query' => array(

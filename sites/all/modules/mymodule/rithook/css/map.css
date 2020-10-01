@@ -64,7 +64,7 @@ body {
 	position: absolute;
 	
 	right: 50px;
-	z-index: 400;
+	z-index: 600;
 	overflow: scroll;
 	background: #7397a4;
 	display: none;
@@ -127,6 +127,12 @@ h1 {
 .lan-switch, .about {
 	top: 10px;
 	text-align: right;
+}
+.lan-switch a {
+	margin-right: 5px;
+}
+.lan-switch a.active {
+	text-decoration: underline;
 }
 
 
