@@ -64,7 +64,7 @@ body {
 	position: absolute;
 	
 	right: 50px;
-	z-index: 201;
+	z-index: 400;
 	overflow: scroll;
 	background: #7397a4;
 	display: none;
@@ -119,19 +119,6 @@ h1 {
 
 }
 
-
-.map-header, .map-footer {
-	height: 50px;
-	position: absolute;
-	z-index: 200;
-	
-}
-
-.map-header {
-	padding-left: 50px;
-	padding-right: 50px;
-}
-
 .map-header, .map-footer, .tab-left, .tab-right {
 	/*background: #c5ad8a;*/
 	background: #FFF;
@@ -142,13 +129,23 @@ h1 {
 	text-align: right;
 }
 
+
+.map-header, .map-footer {
+	height: 50px;
+	position: absolute;
+	z-index: 200;
+	
+}
+.map-header {
+	padding-left: 50px;
+	padding-right: 50px;
+}
+
 .map-footer {
 	bottom: 0px;
 	margin-left: 50px;
 	margin-right: 50px;
 	font-size: 85%;
-
-
 }
 .tab-left, .tab-right {
 	position: absolute;
@@ -157,7 +154,6 @@ h1 {
 	height: 100%;
 	
 }
-
 .tab-right {
 	right: 0px;
 	padding-top: 150px;
@@ -176,12 +172,12 @@ h1 {
 #menu {
 	background: #fff;
 	position: absolute;
-	z-index: 1;
+	z-index: 500;
 	top: 60px;
 	left: 60px;
 	border-radius: 3px;
 	padding: 5px;
-	
+
 }
  
 #menu a {
@@ -193,7 +189,12 @@ h1 {
 	padding: 10px;
 	text-decoration: none;
 	border-bottom: 1px solid rgba(0, 0, 0, 0.25);
-	z-index: 999;
+	z-index: 300;
+
+}
+h4 {
+	font-size: 16px !important;
+	font-weight: bold;
 }
  
 #menu a:last-child {
@@ -244,4 +245,60 @@ body {
 	font-family: 'Noto-Sans-Thai', sans-serif !important;
 	letter-spacing: 0.6px !important; 
 	line-height: 1.5em;
+}
+
+
+@media (max-width:801px)  {
+	.image-logo img {
+		height: 12px;
+	}
+	.map-header {
+	padding-left: 25px;
+	padding-right: 25px;
+	}
+
+	.map-footer {
+		bottom: 0px;
+		margin-left: 25px;
+		margin-right: 25px;
+		font-size: 50%;
+		line-height: 1.5em;
+	}
+	.tab-left, .tab-right {
+		position: absolute;
+		z-index: 200;
+		width: 25px;
+		height: 100%;
+		
+	}
+	.tab-right {
+		right: 0px;
+		padding-top: 75px;
+	}
+	.tab-right img {
+		width: 15px;
+		margin-left: 5px;
+		margin-bottom: 10px;
+	}
+	#menu {
+		left: 35px;
+	}
+	#menu h4, #menu a {
+		font-size: 70% !important;
+		padding: 5px;
+	}
+
+	.info-box {
+		width:200px;
+		right: 25px;
+	}
+
+	#info-body, #info-body li a {
+		font-size: 80%;
+	}
+
+	#info-body h3 {
+		font-size: 1.2em;
+	}
+
 }

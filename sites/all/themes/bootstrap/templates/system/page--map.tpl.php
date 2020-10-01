@@ -447,7 +447,7 @@ $('.close-info-box').click(function () {
 	goOriginal();
 });
 
-$( "#menu > a" ).each(function( index ) {
+$( "#menu a" ).each(function( index ) {
 
 	$(this).click(function(e) {
 
