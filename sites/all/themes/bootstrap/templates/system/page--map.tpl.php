@@ -1,3 +1,53 @@
+<?php
+	global $language;
+    $lan = $language->language;
+?>
+
+<?php 
+
+	if(!$logged_in) {
+
+		$text = '<h2>The site is UNDER CONSTRUCTION</h2>';
+
+		$text .= '
+		<div class="text-th" style="margin-bottom: 20px">
+		โครงการสถานที่เกี่ยวกับสงครามโลกครั้งที่ 2 ในภาคเหนือของประเทศไทย 
+		<br />
+วันและเวลา : โครงการออนไลน์นี้จะเริ่มเปิดตัวตั้งแต่วันที่ 14 ตุลาคม 2563 เป็นต้นไป ในเวลา 20.00 น. ตามเวลาประเทศไทย หรือในเวลา 22.00 น. ตามเวลาญี่ปุ่น 
+		</div>
+		';
+
+		$text .= '
+		<div class="text-th" style="margin-bottom: 20px">
+		World War II Sites Northern Thailand Project
+		<br />
+Date & Time: This online project will be launched from 14 October 2020 onwards - 20.00 GMT +7h = 22.00 JST
+		</div>
+		';
+
+		$text .= '
+		<div class="text-th" style="margin-bottom: 20px">
+第二次世界大戦遺跡 タイ北部プロジェクト
+<br />
+
+日時: 2020年10月14日 日本時間22:00(タイ時間20:00)から
+		</div>
+		';
+
+		print '<div class="man-mode" style="margin-left: 100px">';
+
+
+
+			print $text;
+
+		print '</div>';
+
+	return false;
+}
+
+	?>
+
+
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
 <link href="/sites/all/modules/mymodule/rithook/css/map.css" rel="stylesheet" />
@@ -25,6 +75,7 @@
 
 
 			?>
+			<?php print $logged_in.'xxxxxxxx';?>
 			<?php print l('ภาษาไทย', '<front>', array('language' => _return_language_object('th')));?>
 			<?php print l('English', '<front>', array('language' => _return_language_object('en')));?>
 			<?php print l('日本語', '<front>', array('language' => _return_language_object('ja')));?>
@@ -122,8 +173,7 @@
 
 <?php
 
-	global $language;
-    $lan = $language->language;
+
 
     // Load about content
     $about = node_load(12);
