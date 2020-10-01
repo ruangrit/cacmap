@@ -58,6 +58,10 @@
 <head>
   <link rel="profile" href="<?php print $grddl_profile; ?>" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="WW2 SITES NTH" />
+  <meta property="og:description" content="World War II Sites Northern Thailand Project" />
+  <meta property="og:image" content="/sites/all/modules/mymodule/rithook/images/cac-cover-image.png" />
+
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
   <?php print $styles; ?>
