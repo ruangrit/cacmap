@@ -38,17 +38,37 @@
 
 
 	<nav id="menu">
-		<?php
-			$vocabulary = taxonomy_vocabulary_machine_name_load('ww2_category');
-			$terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
-			foreach ($terms as $term) {
-	 			print '<a class="active" id="cat-'.$term->tid.'" href="#">';
-	 			print '<img width="20px" src="/sites/all/modules/mymodule/rithook/icon/cat-'.$term->tid.'.png" > ';
-	 			print $term->name.'</a>';
-			}
+		<div class="menu-toggle col-xs-12 none-padding">
+			<div class="col-xs-6 none-padding">
+				<h4>Site Legend</h4>
+			</div>
+			<div class="col-xs-6 none-padding text-right">
+				<span class="glyphicon glyphicon-chevron-up"></span>
+				<span class="glyphicon glyphicon-chevron-down"></span>
+			</div>
+
+		</div>
+
+		
+		<div class="menu-info">
+			<h4>WW2 Historical Map Northern Thailand</h4>
+
+		</div>
+		<div class="menu-inner">
+			<?php
+				$vocabulary = taxonomy_vocabulary_machine_name_load('ww2_category');
+				$terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+				foreach ($terms as $term) {
+		 			print '<a class="active" id="cat-'.$term->tid.'" href="#">';
+		 			print '<img width="20px" src="/sites/all/modules/mymodule/rithook/icon/cat-'.$term->tid.'.png" > ';
+		 			print $term->name.'</a>';
+				}
 
 
-		?>
+			?>
+			
+
+		</div>
 	</nav>
 
 	<div class="info-box">
@@ -467,6 +487,25 @@ $( "#menu > a" ).each(function( index ) {
 			
 		}
 	})
+});
+
+$('.menu-toggle').click(function (e) {
+
+	console.log($('.menu-inner').css('display'));
+
+	if ( $('.menu-inner').css('display') != 'none'){
+		$('.menu-inner').slideUp();
+		$('.glyphicon-chevron-up').hide();
+		$('.glyphicon-chevron-down').show();
+	}
+	else {
+		$('.menu-inner').slideDown();
+		$('.glyphicon-chevron-down').hide();
+		$('.glyphicon-chevron-up').show();
+
+	}
+    
+
 });
 
 function goOriginal() {

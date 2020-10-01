@@ -43,6 +43,20 @@ body {
 	padding-left: 0px !important;
 }
 
+.about {
+	padding-right: 0px !important;
+}
+
+.none-padding {
+	padding: 0px !important;
+}
+
+.glyphicon-chevron-down {
+	display: none;
+}
+.menu-toggle {
+	cursor: pointer;
+}
 .info-box {
 
 	width: 400px;
@@ -163,10 +177,11 @@ h1 {
 	background: #fff;
 	position: absolute;
 	z-index: 1;
-	top: 80px;
-	left: 80px;
+	top: 60px;
+	left: 60px;
 	border-radius: 3px;
 	padding: 5px;
+	
 }
  
 #menu a {
