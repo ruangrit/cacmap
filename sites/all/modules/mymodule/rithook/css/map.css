@@ -209,19 +209,23 @@ h4 {
 #menu a:last-child {
 	border: none;
 }
- 
+
+/* 
 #menu a:hover {
 	background-color: #618d9e;
 	color: #404040;
 }
+
+#menu a.active:hover {
+	background: #3074a4;
+}
+ 
+
+*/
  
 #menu a.active {
 	background-color: #446c7b;
 	color: #ffffff;
-}
- 
-#menu a.active:hover {
-	background: #3074a4;
 }
 
 .modal {
