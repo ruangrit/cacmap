@@ -313,5 +313,8 @@ body {
 	#info-body h3 {
 		font-size: 1.2em;
 	}
+	.about {
+		padding-right: 15px !important;
+	}
 
 }
