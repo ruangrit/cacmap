@@ -29,7 +29,15 @@ function rithook_map_object() {
     $lan = $language->language;
 	foreach($nodes as $map) {
 
-        foreach($map->field_location['und'] as $location) {
+        if(isset($map->field_location_lat_long['und'])) {
+            $location_use = $map->field_location_lat_long['und'];
+        }
+        else {
+            $location_use = $map->field_location['und'];
+
+        }
+
+        foreach($location_use as $location) {
 
             $geojson_obj[$run_num] = leaflet_widget_geojson_feature($location['wkt']);
              

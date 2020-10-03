@@ -68,7 +68,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 			<img src="/sites/all/modules/mymodule/rithook/images/Map-Icon-WW2title2.png">
 		</div>
 
-		<div class="col-xs-6 lan-switch">
+		<div class="col-xs-5 lan-switch">
 
 			<?php
 
@@ -110,7 +110,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 			);
 			?>
 		</div>
-		<div class="col-xs-2 about">
+		<div class="col-xs-3 about">
 			<a href="#" class="about-link" data-toggle="modal" data-target="#exampleModalLong">ABOUT</a>	
 		</div>
 	</div>
@@ -599,7 +599,7 @@ function goOriginal() {
 		zoom: zoomDefault,
 		bearing: 0,
 		 
-		speed: 0.7, // make the flying slow
+		speed: 1, // make the flying slow
 		curve: 1, // change the speed at which it zooms out
 		 
 		easing: function (t) {
@@ -618,7 +618,7 @@ function goToPlace(lngLat) {
 		zoom: 11,
 		bearing: 0,
 		 
-		speed: 0.8, // make the flying slow
+		speed: 1, // make the flying slow
 		curve: 1, // change the speed at which it zooms out
 		 
 		easing: function (t) {
