@@ -365,7 +365,9 @@ map.on('load', function () {
 
 	    map.on('click', 'cat-'+catId, function (e) {
 			showMapDetail(e.features[0].properties);
-			goToPlace(e.lngLat);
+			//console.log(e.features[0].geometry.coordinates.slice());
+			//console.log(e.lngLat);
+			goToPlace(e.features[0].geometry.coordinates.slice());
 		
 		});
 
