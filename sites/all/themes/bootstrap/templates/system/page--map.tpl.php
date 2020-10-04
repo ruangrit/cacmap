@@ -54,7 +54,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
-<link href="/sites/all/modules/mymodule/rithook/css/map.css?xxx" rel="stylesheet" />
+<link href="/sites/all/modules/mymodule/rithook/css/map.css?xxxy" rel="stylesheet" />
 
 <div class="loading">
 	<img src="/sites/all/modules/mymodule/rithook/icon/loading_3.gif"  width="200" />
@@ -141,7 +141,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 				$terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
 				foreach ($terms as $term) {
 		 			print '<a class="active" id="cat-'.$term->tid.'" href="#">';
-		 			print '<img width="20px" src="/sites/all/modules/mymodule/rithook/icon/cat-'.$term->tid.'.png" > ';
+		 			print '<img  src="/sites/all/modules/mymodule/rithook/icon/cat-'.$term->tid.'.png" > ';
 		 			print $term->name.'</a>';
 				}
 
@@ -297,6 +297,8 @@ map.on('load', function () {
 
 	    map.on('click', catId, function (e) {
 			showMapDetail(e.features[0].properties);
+			goToPlace(e.lngLat, 8);
+			hideMenu();
 		
 		});
 
@@ -368,6 +370,7 @@ map.on('load', function () {
 			//console.log(e.features[0].geometry.coordinates.slice());
 			//console.log(e.lngLat);
 			goToPlace(e.features[0].geometry.coordinates.slice());
+			hideMenu();
 		
 		});
 
@@ -530,6 +533,7 @@ $('.close-info-box').click(function () {
 
 	$('.info-box').slideUp();
 	goOriginal();
+	showMenu();
 });
 
 $( "#menu a" ).each(function( index ) {
@@ -576,8 +580,6 @@ $( "#menu a" ).each(function( index ) {
 
 $('.menu-toggle').click(function (e) {
 
-	console.log($('.menu-inner').css('display'));
-
 	if ( $('.menu-inner').css('display') != 'none'){
 		$('.menu-inner').slideUp();
 		$('.glyphicon-chevron-up').hide();
@@ -592,6 +594,20 @@ $('.menu-toggle').click(function (e) {
     
 
 });
+
+function hideMenu() {
+	
+	if ( $('.menu-inner').css('display') != 'none'){
+		$('.menu-toggle').trigger('click');
+	}
+}
+
+function showMenu() {
+	if ( $('.menu-inner').css('display') == 'none'){
+		$('.menu-toggle').trigger('click');
+	}
+	
+}
 
 function goOriginal() {
 
@@ -612,12 +628,15 @@ function goOriginal() {
 
 }
 
-function goToPlace(lngLat) {
+function goToPlace(lngLat, zoom) {
+	if (!zoom) {
+		zoom = 11;
+	}
 
 	map.flyTo({
 
 		center: lngLat,
-		zoom: 11,
+		zoom: zoom,
 		bearing: 0,
 		 
 		speed: 1, // make the flying slow
