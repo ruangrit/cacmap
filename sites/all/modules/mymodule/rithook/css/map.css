@@ -279,6 +279,7 @@ body {
 		margin-right: 25px;
 		font-size: 50%;
 		line-height: 1.5em;
+		padding-top: 4px;
 	}
 	.tab-left, .tab-right {
 		position: absolute;
