@@ -595,15 +595,20 @@ $('.menu-toggle').click(function (e) {
 
 });
 
+var menuIsOpen;
 function hideMenu() {
 	
 	if ( $('.menu-inner').css('display') != 'none'){
 		$('.menu-toggle').trigger('click');
+		menuIsOpen = true;
+	}
+	else {
+		menuIsOpen = false;
 	}
 }
 
 function showMenu() {
-	if ( $('.menu-inner').css('display') == 'none'){
+	if ( $('.menu-inner').css('display') == 'none' && menuIsOpen){
 		$('.menu-toggle').trigger('click');
 	}
 	
