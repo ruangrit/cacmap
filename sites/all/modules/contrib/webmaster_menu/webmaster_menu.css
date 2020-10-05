@@ -28,6 +28,7 @@
   list-style: none;
   list-style-image: none;
   list-style-type: none;
+  border-right: 3px solid #fff
 }
 
 .webmaster-menu ul.menu li.expanded li.expanded > a {
