@@ -78,7 +78,7 @@ function rithook_map_object() {
                 $geojson_obj[$run_num]['properties']['reference'] = $map->field_reference[$lan][0]['value'];
             }
 
-            $geojson_obj[$run_num]['properties']['reference_file'] = '';
+            $geojson_obj[$run_num]['properties']['reference_file'] = array();
             if (isset($map->field_reference_file['und'])) {
                 $run_num_file = 0;
                 foreach ($map->field_reference_file['und'] as $file) {
@@ -96,7 +96,7 @@ function rithook_map_object() {
                 }
             }
 
-            $geojson_obj[$run_num]['properties']['image'] = '';
+            $geojson_obj[$run_num]['properties']['image'] = array();
             if (isset($map->field_image['und'])) {
                 $run_num_image = 0;
                 foreach ($map->field_image['und'] as $image) {
