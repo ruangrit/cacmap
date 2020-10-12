@@ -267,6 +267,10 @@ body {
 	display: none;
 }
 
+.diretion-link a{
+	color: #FFF;
+}
+
 
 @media (max-width:991px)  {
 	.image-logo img {

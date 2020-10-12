@@ -195,6 +195,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 			$label_note = t('Note');
 			$label_reference = t('Reference');
 			$label_reference_file = t('Reference paper file');
+			$label_map_direction = t('Google map direction to this location');
 		?>
 		© Chiang Mai Art Conversation 2020(cc) BY-NC. Unless otherwise noted.
 คำประกาศสิทธิ: เนื้อหาในเว็บไซต์ ถือสิทธิโดย " Chiang Mai Art Conversation " เว้นแต่ได้ระบุเป็นอย่างอื่นไว้ สามารถนำไปใช้งานได้ตามเงื่อนไข สัญญาอนุญาต Creative Commons (cc) BY-NC กล่าวคือ ต้องอ้างอิงแหล่งที่มา และไม่ใช้เพื่อการค้า
@@ -307,6 +308,7 @@ map.on('load', function () {
 
 
 	    map.on('click', catId, function (e) {
+	    	
 			showMapDetail(e.features[0].properties);
 			goToPlace(e.lngLat, 8);
 			hideMenu();
@@ -495,6 +497,7 @@ function showMapDetail(data) {
 	var label_note = '<?php print $label_note;?>';
 	var label_reference = '<?php print $label_reference;?>';
 	var label_reference_file = '<?php print $label_reference_file;?>';
+	var label_map_direction = '<?php print $label_map_direction;?>';
 
 	html += '<div class="col-sm-6 col-xs-6 col-md-12">';
 	
@@ -537,7 +540,11 @@ function showMapDetail(data) {
 		html += '<ul>';
 		html += '</div>';
 	}
+	//directionIconPath = '/sites/all/modules/mymodule/rithook/icon/google-maps.png';
+	html += '<div class="diretion-link"><a href="https://maps.google.com/?saddr=My%20Location&daddr='+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
+
 	html += '</div>';
+
 
 	$('#info-body').html(html);
 	$('.info-box').slideDown();
