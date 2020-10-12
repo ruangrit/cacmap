@@ -431,9 +431,11 @@ function showMapDetail(data) {
 		html += '<h3>'+data.name+'</h3>';
 	}
 
-	if(data.image) {
+	var images = JSON.parse(data.image);
 
-		var images = JSON.parse(data.image);
+	if (typeof images !== 'undefined' && images.length > 0) {
+
+		
 
 		var url;
 		var title;
@@ -522,10 +524,10 @@ function showMapDetail(data) {
 		html += '<div><span class="label"> '+label_reference+':</span> '+data.reference+'</div>';
 	}
 
+	var reference_file = JSON.parse(data.reference_file);
+	
+	if (typeof reference_file !== 'undefined' && reference_file.length > 0) {
 
-	if (data.reference_file) {
-
-		var reference_file = JSON.parse(data.reference_file);
 		var url_file;
 		var title_file;
 		html += '<div class="ref-file">';
