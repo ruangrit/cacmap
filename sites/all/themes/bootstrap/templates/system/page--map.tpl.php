@@ -368,7 +368,9 @@ map.on('load', function () {
 			'layout': {
 				'visibility': 'visible',
 				'icon-image': 'cat-'+catId,
-				'icon-size': iconSize
+				'icon-size': iconSize,
+				'icon-allow-overlap': true,
+				
 			},
 			'filter': ['all',
 				['==', '$type', 'Point'],
