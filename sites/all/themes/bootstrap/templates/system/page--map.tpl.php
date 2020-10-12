@@ -5,7 +5,7 @@
 
 <?php 
 
-	if(isset($_GET['ww2']) && $_GET['ww2'] == 'qazsdwef220597') {
+	if(isset($_GET['ww2']) && $_GET['ww2'] == 'qazsdwef220597' || true) {
 
 	}
 	else {
