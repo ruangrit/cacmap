@@ -253,11 +253,13 @@ var refreshIntervalId;
 
 map.on('load', function () {
 
-	var directions = new MapboxDirections({
+	/*var directions = new MapboxDirections({
     	accessToken: mapboxgl.accessToken
   	});
 
   	map.addControl(directions, 'top-right');
+
+  	*/
 	
 	// Add a source for the state polygons.
 	var lan = '<?php print $lan;?>';
