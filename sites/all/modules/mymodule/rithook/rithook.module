@@ -40,7 +40,7 @@ function rithook_map_object() {
         foreach($location_use as $location) {
 
             $geojson_obj[$run_num] = leaflet_widget_geojson_feature($location['wkt']);
-            dpm($geojson_obj[$run_num]);
+        
 
             if($geojson_obj[$run_num]['geometry']->type == 'Point') {
                 $geojson_obj[$run_num]['properties']['lat'] = $geojson_obj[$run_num]['geometry']->coordinates[0];

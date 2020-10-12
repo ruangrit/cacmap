@@ -89,7 +89,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 					'language' => _return_language_object('th'),
 					'query' => array(
 
-							'ww2' => $_GET['ww2'],
+							//'ww2' => $_GET['ww2'],
 					),
 				)
 			);
@@ -98,7 +98,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 					'language' => _return_language_object('en'),
 					'query' => array(
 
-							'ww2' => $_GET['ww2'],
+							//'ww2' => $_GET['ww2'],
 					),
 				)
 			);
@@ -107,7 +107,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 					'language' => _return_language_object('ja'),
 					'query' => array(
 
-							'ww2' => $_GET['ww2'],
+							//'ww2' => $_GET['ww2'],
 					),
 				)
 			);
