@@ -257,8 +257,6 @@ map.on('load', function () {
     	accessToken: mapboxgl.accessToken
   	});
 
-  	//==directions.setOrigin([98.318, 18.9933]);
-  	//==directions.setDestination([99.3658, 19.005]);
   	map.addControl(directions, 'top-right');
 	
 	// Add a source for the state polygons.
@@ -383,8 +381,9 @@ map.on('load', function () {
 			goToPlace(e.features[0].geometry.coordinates.slice());
 			hideMenu();
 
-			directions.setOrigin([98.318, 18.9933]);
-  			directions.setDestination([99.3658, 19.005]);
+			//Todo make direct to destination
+			//=====directions.setOrigin([98.318, 18.9933]);
+  			//======directions.setDestination([99.3658, 19.005]);
   			//map.addControl(directions, 'top-right');
 		
 		});
