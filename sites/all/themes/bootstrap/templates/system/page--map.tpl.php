@@ -56,6 +56,9 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
 <link href="/sites/all/modules/mymodule/rithook/css/map.css?xxxy" rel="stylesheet" />
 
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.js'></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.css' type='text/css' />
+
 <div class="loading">
 	<img src="/sites/all/modules/mymodule/rithook/icon/loading_3.gif"  width="200" />
 </div>
@@ -249,6 +252,14 @@ var map = new mapboxgl.Map({
 var refreshIntervalId;
 
 map.on('load', function () {
+
+	var directions = new MapboxDirections({
+    	accessToken: mapboxgl.accessToken
+  	});
+
+  	//==directions.setOrigin([98.318, 18.9933]);
+  	//==directions.setDestination([99.3658, 19.005]);
+  	map.addControl(directions, 'top-right');
 	
 	// Add a source for the state polygons.
 	var lan = '<?php print $lan;?>';
@@ -371,6 +382,10 @@ map.on('load', function () {
 			//console.log(e.lngLat);
 			goToPlace(e.features[0].geometry.coordinates.slice());
 			hideMenu();
+
+			directions.setOrigin([98.318, 18.9933]);
+  			directions.setDestination([99.3658, 19.005]);
+  			//map.addControl(directions, 'top-right');
 		
 		});
 

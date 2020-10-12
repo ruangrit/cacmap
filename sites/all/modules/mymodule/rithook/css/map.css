@@ -263,6 +263,10 @@ body {
 	line-height: 1.5em;
 }
 
+.mapboxgl-control-container {
+	display: none;
+}
+
 
 @media (max-width:991px)  {
 	.image-logo img {
