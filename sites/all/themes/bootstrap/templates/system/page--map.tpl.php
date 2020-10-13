@@ -239,8 +239,8 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 
 $ = jQuery;
 
-var mapCenter = [99.0501594543, 18.7249499481];
-var zoomDefault = 6.5;
+var mapCenter = [98.9842, 18.7872];
+var zoomDefault = 11;
 
 mapboxgl.accessToken = 'pk.eyJ1IjoicnVhbmdyaXQiLCJhIjoiY2tlMWFua2VuMGJrdDJ5bXdweWp0M3gyaCJ9.JF08GIkAbniR_wUUVe_80A';
 var map = new mapboxgl.Map({
@@ -370,7 +370,7 @@ map.on('load', function () {
 				'icon-image': 'cat-'+catId,
 				'icon-size': iconSize,
 				'icon-allow-overlap': true,
-				
+
 			},
 			'filter': ['all',
 				['==', '$type', 'Point'],
@@ -662,23 +662,28 @@ function goOriginal() {
 
 function goToPlace(lngLat, zoom) {
 	if (!zoom) {
-		zoom = 11;
+		zoom = 15;
 	}
 
-	map.flyTo({
+	var currentZoom = map.getZoom();
 
-		center: lngLat,
-		zoom: zoom,
-		bearing: 0,
-		 
-		speed: 1, // make the flying slow
-		curve: 1, // change the speed at which it zooms out
-		 
-		easing: function (t) {
-			return t;
-		},
-		essential: true
-	});
+	if (currentZoom < zoom) {
+		map.flyTo({
+
+			center: lngLat,
+			zoom: zoom,
+			bearing: 0,
+			 
+			speed: 1, // make the flying slow
+			curve: 1, // change the speed at which it zooms out
+			 
+			easing: function (t) {
+				return t;
+			},
+			essential: true
+		});
+	}
+
 }
 
 </script>
