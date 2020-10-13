@@ -240,7 +240,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 $ = jQuery;
 
 var mapCenter = [98.9842, 18.7872];
-var zoomDefault = 11;
+var zoomDefault = 11.5;
 
 mapboxgl.accessToken = 'pk.eyJ1IjoicnVhbmdyaXQiLCJhIjoiY2tlMWFua2VuMGJrdDJ5bXdweWp0M3gyaCJ9.JF08GIkAbniR_wUUVe_80A';
 var map = new mapboxgl.Map({
