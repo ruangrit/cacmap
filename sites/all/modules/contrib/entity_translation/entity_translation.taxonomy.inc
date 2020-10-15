@@ -258,10 +258,15 @@ function entity_translation_field_widget_taxonomy_autocomplete_form_alter(&$elem
  * @return object[]
  *   An associative array of taxonomy term object keyed by their identifiers.
  */
+function _fix_bug_rit1($tiem) {
+
+  return $item['tid'];
+}
 function _entity_translation_taxonomy_autocomplete_widget_get_terms($element) {
   $items = isset($element['#entity']->{$element['#field_name']}[$element['#language']]) ?
     $element['#entity']->{$element['#field_name']}[$element['#language']] : array();
-  $tids = array_map(function ($item) { return $item['tid']; }, $items);
+  //$tids = array_map(function ($item) { return $item['tid']; }, $items);
+  $tids = array_map(_fix_bug_rit1($item), $items);
   return taxonomy_term_load_multiple($tids);
 }
 
