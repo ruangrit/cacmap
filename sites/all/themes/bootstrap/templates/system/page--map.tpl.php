@@ -54,7 +54,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 
 <script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
-<link href="/sites/all/modules/mymodule/rithook/css/map.css?xxxy" rel="stylesheet" />
+<link href="/sites/all/modules/mymodule/rithook/css/map.css?x" rel="stylesheet" />
 
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.css' type='text/css' />

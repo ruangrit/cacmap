@@ -10,7 +10,7 @@
         $('.leaflet-widget').once().each(function(i, item) {
             var id = $(item).attr('id'),
                 options = settings.leaflet_widget_widget[id];
-
+            console.log(options.map);
             L.Util.extend(options.map, {
                 layers: [L.tileLayer(options.map.base_url)],
             });
