@@ -426,7 +426,7 @@ function loadingDone() {
 }
 
 
-	
+/*	
 if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
 } else { 
@@ -440,7 +440,7 @@ function showPosition(position) {
     myLoLat = position.coords.latitude;
     myLoLng = position.coords.longitude;
 }
-
+*/
 
 function showMapDetail(data) {
 
@@ -564,7 +564,8 @@ function showMapDetail(data) {
 
 	//directionIconPath = '/sites/all/modules/mymodule/rithook/icon/google-maps.png';
 	//html += '<div class="diretion-link"><a href="https://maps.google.com/?saddr=My%20Location&daddr='+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
-	html += '<div class="diretion-link"><a href="https://www.google.com/maps/dir/'+myLoLat+','+myLoLng+'/'+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
+	//html += '<div class="diretion-link"><a href="https://www.google.com/maps/dir/'+myLoLat+','+myLoLng+'/'+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
+	html += '<div class="diretion-link"><a href="https://maps.google.com?saddr=Current+Location&daddr='+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
 
 	html += '</div>';
 
