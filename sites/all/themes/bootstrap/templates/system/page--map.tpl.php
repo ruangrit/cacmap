@@ -73,7 +73,16 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 
 		<div class="col-xs-3 lan-switch">
 
-			<?php
+
+		</div>
+		<div class="col-xs-3 about">
+			<a href="#" class="about-link" data-toggle="modal" data-target="#exampleModalLong">ABOUT</a>	
+		</div>
+	</div>
+
+	<div class="tab-left">
+		
+					<?php
 
 			function _return_language_object($langCode){ 
 			    $languages = language_list(); 
@@ -112,13 +121,8 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 				)
 			);
 			?>
-		</div>
-		<div class="col-xs-3 about">
-			<a href="#" class="about-link" data-toggle="modal" data-target="#exampleModalLong">ABOUT</a>	
-		</div>
+			
 	</div>
-
-	<div class="tab-left">&nbsp;</div>
 
 
 	<nav id="menu">

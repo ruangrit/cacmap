@@ -134,7 +134,7 @@ h1 {
 .lan-switch a {
 	margin-right: 5px;
 }
-.lan-switch a.active {
+.lan-switch a.active, .tab-left a.active {
 	text-decoration: underline;
 }
 
@@ -161,16 +161,18 @@ h1 {
 	z-index: 200;
 	width: 50px;
 	height: 100%;
+	padding-top: 150px;
 	
 }
 .tab-right {
 	right: 0px;
-	padding-top: 150px;
+	
 }
-.tab-right img {
+.tab-right img, .tab-left a {
 	width: 30px;
 	margin-left: 10px;
 	margin-bottom: 10px;
+	display: block;
 }
 .mapboxgl-popup {
 	max-width: 400px;
@@ -296,11 +298,13 @@ body {
 		height: 100%;
 		
 	}
-	.tab-right {
-		right: 0px;
+	.tab-right, .tab-left {
+		
 		padding-top: 75px;
+		font-size: .85em;
 	}
-	.tab-right img {
+
+	.tab-right img, .tab-left a {
 		width: 15px;
 		margin-left: 5px;
 		margin-bottom: 20px;
