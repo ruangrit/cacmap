@@ -66,12 +66,12 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 <div class="map-wrapper">
 
 	<div class="map-header col-xs-12">
-		<div class="col-xs-4 image-logo">
+		<div class="col-xs-6 image-logo">
 
 			<img src="/sites/all/modules/mymodule/rithook/images/Map-Icon-WW2title2.png">
 		</div>
 
-		<div class="col-xs-5 lan-switch">
+		<div class="col-xs-4 lan-switch">
 
 			<?php
 
@@ -113,7 +113,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 			);
 			?>
 		</div>
-		<div class="col-xs-3 about">
+		<div class="col-xs-2 about">
 			<a href="#" class="about-link" data-toggle="modal" data-target="#exampleModalLong">ABOUT</a>	
 		</div>
 	</div>
