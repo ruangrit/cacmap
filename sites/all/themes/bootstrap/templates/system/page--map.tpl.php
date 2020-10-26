@@ -272,6 +272,15 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 	      			<th>Title</th>
 	      			<th>Category</th>
 	      			<th>Action</th>
+
+	      			<?php
+	      			 global $user;
+	      			 $user_can_edit = FALSE;
+						if (in_array('editor', $user->roles) || in_array('administrator', $user->roles)) {
+							$user_can_edit = TRUE;
+							print '<th>Admin Action</th>';
+						}
+					?>
 	      		</tr>
 
 	      		<tr>
@@ -285,19 +294,25 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 		              <option value=""></option>
 		              <?php
 
-		              	
+		              	// modal list of all items
+		               
+
 		              	foreach ($terms as $term) {
 		              		
 		              		print '<option value="'.$term->name.'">'.$term->name.'</option>';
 		              	}
 
-
-		              	dpm($term_array);
 		              ?>
 		            </select>
 
 	          		</th>
 	          		<th></th>
+
+	          		<?php
+						if ($user_can_edit) {
+							print '<th></th>';
+						}
+	          		?>
 
 	          	</tr>
 
@@ -332,8 +347,13 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 				            }
 
 
+				        print '<tr>';
+	        			print '<td>'.$map->title_field[$lan][0]['value'].'</td><td>'.$term_array[$map->field_ww2_category['und'][0]['tid']].'</td><td class="go-to-place" lat="'.$wkt_lat.'" lng="'.$wkt_lng.'">Goto this place</td>';
 
-	        			print '<tr><td>'.$map->title_field[$lan][0]['value'].'</td><td>'.$term_array[$map->field_ww2_category['und'][0]['tid']].'</td><td class="go-to-place" lat="'.$wkt_lat.'" lng="'.$wkt_lng.'">Goto this place</td></tr>';
+	        			if ($user_can_edit) {
+	        				print '<td>'.l('Edit', 'node/'.$map->nid.'/edit', array('attributes' => array('target'=>'_blank'))).'</td>';
+	        			}
+	        			print '</tr>';
 					}
 	        	?>
 
@@ -835,7 +855,7 @@ function goToPlace(lngLat, zoom) {
 
 $('.go-to-place').click(function () {
 	var position_go = [$(this).attr('lat'), $(this).attr('lng')];
-	goToPlace(position_go, 19);
+	goToPlace(position_go, 18);
 	$('#exampleModalLongList').modal('hide');
 });
 
