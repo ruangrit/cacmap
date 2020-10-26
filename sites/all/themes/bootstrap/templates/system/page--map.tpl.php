@@ -253,7 +253,17 @@ var map = new mapboxgl.Map({
 	center: mapCenter,
 	zoom: zoomDefault
 });
- 
+
+
+navigator.geolocation.watchPosition(render);
+
+function render(pos) {
+    var lat = pos.coords.latitude;
+    var lon = pos.coords.longitude;
+
+    console.log(lat+','+lon);
+}
+
 var refreshIntervalId;
 
 map.on('load', function () {
