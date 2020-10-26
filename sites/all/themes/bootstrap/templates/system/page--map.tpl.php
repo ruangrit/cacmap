@@ -348,7 +348,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 
 
 				        print '<tr>';
-	        			print '<td>'.$map->title_field[$lan][0]['value'].'</td><td>'.$term_array[$map->field_ww2_category['und'][0]['tid']].'</td><td class="go-to-place" lat="'.$wkt_lat.'" lng="'.$wkt_lng.'">Goto this place</td>';
+	        			print '<td>'.$map->title_field[$lan][0]['value'].'</td><td>'.$term_array[$map->field_ww2_category['und'][0]['tid']].'</td><td class="go-to-place" lat="'.$wkt_lat.'" lng="'.$wkt_lng.'" style="cursor: pointer">Goto this place</td>';
 
 	        			if ($user_can_edit) {
 	        				print '<td>'.l('Edit', 'node/'.$map->nid.'/edit', array('attributes' => array('target'=>'_blank'))).'</td>';
