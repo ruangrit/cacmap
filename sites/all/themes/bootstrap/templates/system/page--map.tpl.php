@@ -254,20 +254,25 @@ var map = new mapboxgl.Map({
 	zoom: zoomDefault
 });
 
+let geolocate = new mapboxgl.GeolocateControl({
 
-navigator.geolocation.watchPosition(render);
 
-function render(pos) {
-    var lat = pos.coords.latitude;
-    var lon = pos.coords.longitude;
+});
+map.addControl(geolocate);
 
-    console.log(lat+','+lon);
-}
+
+geolocate.on('geolocate', function (position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    console.log('lat, lng', latitude, longitude);
+});
+
 
 var refreshIntervalId;
 
 map.on('load', function () {
-
+	
+	//geolocate.trigger();
 	/*var directions = new MapboxDirections({
     	accessToken: mapboxgl.accessToken
   	});
@@ -579,7 +584,9 @@ function showMapDetail(data) {
 	//directionIconPath = '/sites/all/modules/mymodule/rithook/icon/google-maps.png';
 	//html += '<div class="diretion-link"><a href="https://maps.google.com/?saddr=My%20Location&daddr='+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
 	//html += '<div class="diretion-link"><a href="https://www.google.com/maps/dir/'+myLoLat+','+myLoLng+'/'+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
-	html += '<div class="diretion-link"><a href="https://maps.google.com?saddr=Current+Location&daddr='+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
+	html += '<div class="diretion-link"><a href="https://www.google.com/maps?saddr=My+Location&daddr='+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
+
+	//html += '<div class="diretion-link"><a href="https://maps.google.com?saddr=Current+Location&daddr='+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
 
 	html += '</div>';
 
