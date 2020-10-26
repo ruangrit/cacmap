@@ -56,6 +56,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 <link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
 <link href="/sites/all/modules/mymodule/rithook/css/map.css?xxx" rel="stylesheet" />
 
+
 <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.js'></script>
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v3.1.3/mapbox-gl-directions.css' type='text/css' />
 
@@ -71,11 +72,11 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 			<img src="/sites/all/modules/mymodule/rithook/images/Map-Icon-WW2title2.png">
 		</div>
 
-		<div class="col-xs-3 lan-switch">
-
+		<div class="col-xs-2 lan-switch">
+		<a href="#" class="about-link" data-toggle="modal" data-target="#exampleModalLongList">List</a>	
 
 		</div>
-		<div class="col-xs-3 about">
+		<div class="col-xs-4 about">
 			<a href="#" class="about-link" data-toggle="modal" data-target="#exampleModalLong">ABOUT</a>	
 		</div>
 	</div>
@@ -146,7 +147,9 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 			<?php
 				$vocabulary = taxonomy_vocabulary_machine_name_load('ww2_category');
 				$terms = entity_load('taxonomy_term', FALSE, array('vid' => $vocabulary->vid));
+				$term_array = array();
 				foreach ($terms as $term) {
+					$term_array[$term->tid] = $term->name;
 		 			print '<a class="active" id="cat-'.$term->tid.'" href="#">';
 		 			print '<img  src="/sites/all/modules/mymodule/rithook/icon/cat-'.$term->tid.'.png" > ';
 		 			print $term->name.'</a>';
@@ -238,6 +241,90 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 </div>
 
 
+<!-- Modal List -->
+<div class="modal fade" id="exampleModalLongList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitleList" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitleList">List</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+      <?php
+		$type = "map"; 
+		$nodes = node_load_multiple(array(), array('type' => $type)); 
+		$run_num = 0;
+
+	    global $language;
+	    $lan = $language->language;
+		
+
+
+      ?>
+        
+      	<table class="js-dynamitable  table table-bordered">
+
+	      	<thead>
+	      		<tr>
+	      			<th>Title</th>
+	      			<th>Category</th>
+	      			<th>Action</th>
+	      		</tr>
+
+	      		<tr>
+	          		<th> 
+	            
+	            		<input  class="js-filter  form-control" type="text" value="">
+	          		</th>
+	          		<th> 
+	            
+	           		<select class="js-filter  form-control">
+		              <option value=""></option>
+		              <?php
+
+		              	
+		              	foreach ($terms as $term) {
+		              		
+		              		print '<option value="'.$term->name.'">'.$term->name.'</option>';
+		              	}
+
+
+		              	dpm($term_array);
+		              ?>
+		            </select>
+
+	          		</th>
+	          		<th></th>
+
+	          	</tr>
+
+
+	      	</thead>
+
+	        <tbody>
+	        	
+	        	<?php
+
+	        		foreach($nodes as $map) {
+	        			print '<tr><td>'.$map->title_field[$lan][0]['value'].'</td><td>'.$term_array[$map->field_ww2_category['und'][0]['tid']].'</td><td>xx</td></tr>';
+					}
+	        	?>
+
+	        </tbody>
+
+
+      	</table>
+
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+
 
 <script>
 
@@ -254,19 +341,13 @@ var map = new mapboxgl.Map({
 	zoom: zoomDefault
 });
 
-let geolocate = new mapboxgl.GeolocateControl({
+$('.toMarker').click(function () {
+    var latlngPoint = [98.98159950971603, 18.7952999687339];
+    goToPlace(latlngPoint, 20);
+    
 
 
 });
-map.addControl(geolocate);
-
-
-geolocate.on('geolocate', function (position) {
-    const latitude = position.coords.latitude;
-    const longitude = position.coords.longitude;
-    console.log('lat, lng', latitude, longitude);
-});
-
 
 var refreshIntervalId;
 
@@ -729,5 +810,7 @@ function goToPlace(lngLat, zoom) {
 }
 
 </script>
+
+<script src="/sites/all/modules/mymodule/rithook/js/dynamitable.jquery.min.js"></script>
 
 
