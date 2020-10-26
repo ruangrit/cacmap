@@ -309,7 +309,31 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 	        	<?php
 
 	        		foreach($nodes as $map) {
-	        			print '<tr><td>'.$map->title_field[$lan][0]['value'].'</td><td>'.$term_array[$map->field_ww2_category['und'][0]['tid']].'</td><td>xx</td></tr>';
+	        			   if(isset($map->field_location_lat_long['und'])) {
+					            $location_use = $map->field_location_lat_long['und'][0];
+					        }
+					        else {
+					            $location_use = $map->field_location['und'][0];
+
+					        }
+					        $location_wkt = leaflet_widget_geojson_feature($location_use['wkt']);
+
+
+
+				            if($location_wkt['geometry']->type == 'Point') {
+				                $wkt_lat  = $location_wkt['geometry']->coordinates[0];
+				                $wkt_lng  = $location_wkt['geometry']->coordinates[1];
+
+				            }
+				            else {
+				                $wkt_lat = $location_wkt['geometry']->coordinates[0][0];
+				                $wkt_lng = $location_wkt['geometry']->coordinates[0][1];
+
+				            }
+
+
+
+	        			print '<tr><td>'.$map->title_field[$lan][0]['value'].'</td><td>'.$term_array[$map->field_ww2_category['und'][0]['tid']].'</td><td class="go-to-place" lat="'.$wkt_lat.'" lng="'.$wkt_lng.'">Goto this place</td></tr>';
 					}
 	        	?>
 
@@ -808,6 +832,16 @@ function goToPlace(lngLat, zoom) {
 	}
 
 }
+
+$('.go-to-place').click(function () {
+	var position_go = [$(this).attr('lat'), $(this).attr('lng')];
+	goToPlace(position_go, 19);
+	$('#exampleModalLongList').modal('hide');
+});
+
+$('#exampleModalLongList').on('show.bs.modal', function (e) {
+  goOriginal();
+})
 
 </script>
 
