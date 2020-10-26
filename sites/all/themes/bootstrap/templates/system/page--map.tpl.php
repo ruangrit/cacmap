@@ -73,7 +73,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
 		</div>
 
 		<div class="col-xs-2 lan-switch">
-		<a href="#" class="about-link" data-toggle="modal" data-target="#exampleModalLongList">List</a>	
+		<a href="#" class="about-link" data-toggle="modal" data-target="#exampleModalLongList">Search</a>	
 
 		</div>
 		<div class="col-xs-4 about">
@@ -246,7 +246,7 @@ Date & Time: This online project will be launched from 14 October 2020 onwards -
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitleList">List</h5>
+        <h5 class="modal-title" id="exampleModalLongTitleList">List of all items</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
