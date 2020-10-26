@@ -464,6 +464,21 @@ function showPosition(position) {
 function showMapDetail(data) {
 
 	var html = '';
+	var label_address = '<?php print $label_address;?>';
+	var label_ww2_status = '<?php print $label_ww2_status;?>';
+	var label_present_status = '<?php print $label_present_status;?>';
+	var label_founded = '<?php print $label_founded;?>';
+	var label_note = '<?php print $label_note;?>';
+	var label_reference = '<?php print $label_reference;?>';
+	var label_reference_file = '<?php print $label_reference_file;?>';
+	var label_map_direction = '<?php print $label_map_direction;?>';
+
+	//directionIconPath = '/sites/all/modules/mymodule/rithook/icon/google-maps.png';
+	//html += '<div class="diretion-link"><a href="https://maps.google.com/?saddr=My%20Location&daddr='+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
+	//html += '<div class="diretion-link"><a href="https://www.google.com/maps/dir/'+myLoLat+','+myLoLng+'/'+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
+	html += '<div class="diretion-link"><a href="https://www.google.com/maps?saddr=My+Location&daddr='+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
+
+	//html += '<div class="diretion-link"><a href="https://maps.google.com?saddr=Current+Location&daddr='+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
 	if(data.name) {
 
 		html += '<h3>'+data.name+'</h3>';
@@ -530,14 +545,6 @@ function showMapDetail(data) {
 
 
 
-	var label_address = '<?php print $label_address;?>';
-	var label_ww2_status = '<?php print $label_ww2_status;?>';
-	var label_present_status = '<?php print $label_present_status;?>';
-	var label_founded = '<?php print $label_founded;?>';
-	var label_note = '<?php print $label_note;?>';
-	var label_reference = '<?php print $label_reference;?>';
-	var label_reference_file = '<?php print $label_reference_file;?>';
-	var label_map_direction = '<?php print $label_map_direction;?>';
 
 	html += '<div class="col-sm-6 col-xs-6 col-md-12">';
 	
@@ -581,12 +588,6 @@ function showMapDetail(data) {
 		html += '</div>';
 	}
 
-	//directionIconPath = '/sites/all/modules/mymodule/rithook/icon/google-maps.png';
-	//html += '<div class="diretion-link"><a href="https://maps.google.com/?saddr=My%20Location&daddr='+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
-	//html += '<div class="diretion-link"><a href="https://www.google.com/maps/dir/'+myLoLat+','+myLoLng+'/'+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
-	html += '<div class="diretion-link"><a href="https://www.google.com/maps?saddr=My+Location&daddr='+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
-
-	//html += '<div class="diretion-link"><a href="https://maps.google.com?saddr=Current+Location&daddr='+data.lng+','+data.lat+'" target="_blank">'+label_map_direction+'</a></div>';
 
 	html += '</div>';
 
